@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb5de02596b4079a5c0dafd682e4f50, type: 3}
+  m_Name: Asteroid1Config
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 4251164174857805737, guid: b62bc95cd3a83c743907f38a1a886646, type: 3}
+  - {fileID: 644929695885146477, guid: 52578d8b9a333fa4b8d81af9b8651219, type: 3}
+  - {fileID: 4240415372443689878, guid: 774a72213802470498dfcc0d8daff6d0, type: 3}
+  minDelay: 0.1
+  maxDelay: 0.4

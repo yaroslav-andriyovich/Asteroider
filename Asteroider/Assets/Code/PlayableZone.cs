@@ -4,16 +4,18 @@ namespace Code
 {
     public class PlayableZone : MonoBehaviour
     {
-        private void Awake() => 
-            Resize();
+        [SerializeField] private string[] _tagsToDestroyInOutRange;
+        
+        private void Awake() =>
+            transform.localScale = Utils.GetStretchedSizeRelativeToCamera();
 
-        private void Resize()
+        private void OnTriggerExit(Collider other)
         {
-            Camera camera = Camera.main;
-            float height = 2f * camera.orthographicSize;
-            float width = height * camera.aspect;
-            
-            transform.localScale = new Vector3(width, 1, height);
+            for (int i = 0; i < _tagsToDestroyInOutRange.Length; i++)
+            {
+                if (other.CompareTag(_tagsToDestroyInOutRange[i]))
+                    Destroy(other.gameObject);
+            }
         }
     }
 }
