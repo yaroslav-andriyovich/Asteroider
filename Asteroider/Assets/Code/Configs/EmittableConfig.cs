@@ -1,4 +1,5 @@
 using Code.Entities;
+using Code.Utils;
 using UnityEngine;
 
 namespace Code.Configs
@@ -7,8 +8,10 @@ namespace Code.Configs
     public class EmittableConfig : ScriptableObject
     {
         public GameObject[] prefabs;
-        public float minDelay;
-        public float maxDelay;
+        public MinMaxFloat delay;
+        public MinMaxFloat rotationSpeed;
+        public MinMaxFloat speed;
+        public MinMaxFloat deviationAngle;
 
         private void OnValidate()
         {

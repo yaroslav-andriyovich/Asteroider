@@ -1,3 +1,4 @@
+using Code.Utils;
 using UnityEngine;
 
 namespace Code
@@ -7,7 +8,7 @@ namespace Code
         [SerializeField] private string[] _tagsToDestroyInOutRange;
         
         private void Awake() =>
-            transform.localScale = Utils.GetStretchedSizeRelativeToCamera();
+            transform.localScale = CameraUtils.GetStretchedSizeRelative();
 
         private void OnTriggerExit(Collider other)
         {

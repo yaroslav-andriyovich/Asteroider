@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace Code.Entities
 {
     public interface IEmittable
     {
-        void Emit(float forwardDirection);
+        Rigidbody Rigidbody { get; }
     }
 }

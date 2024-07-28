@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Code
+namespace Code.Utils
 {
-    public static class Utils
+    public static class CameraUtils
     {
-        public static Vector3 GetStretchedSizeRelativeToCamera()
+        public static Vector3 GetStretchedSizeRelative()
         {
             Camera camera = Camera.main;
             float height = 2f * camera.orthographicSize;

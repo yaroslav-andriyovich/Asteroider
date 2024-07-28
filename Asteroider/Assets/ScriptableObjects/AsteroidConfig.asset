@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9eb5de02596b4079a5c0dafd682e4f50, type: 3}
-  m_Name: Asteroid1Config
+  m_Name: AsteroidConfig
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 4251164174857805737, guid: b62bc95cd3a83c743907f38a1a886646, type: 3}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Code.Configs;
 using Code.Entities;
+using Code.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,6 @@ namespace Code
 {
     public class ObjectEmitter : MonoBehaviour
     {
-        [SerializeField] private ForwardDirection _forwardDirection;
         [SerializeField] private List<EmittableConfig> _emittableConfigs;
 
         private float _dividedLocalScaleX;
@@ -30,7 +30,7 @@ namespace Code
         {
             Vector3 scale = transform.localScale;
             
-            scale.x = Utils.GetStretchedSizeRelativeToCamera().x;
+            scale.x = CameraUtils.GetStretchedSizeRelative().x;
             transform.localScale = scale;
         }
 
@@ -41,13 +41,15 @@ namespace Code
                 yield return new WaitForSeconds(GetNextLaunchTime(config));
 
                 GameObject spawnedObject = Instantiate(GetPrefabToSpawn(config), GetSpawnPosition(), Quaternion.identity);
+                IEmittable component = spawnedObject.GetComponent<IEmittable>();
                 
-                spawnedObject.GetComponent<IEmittable>().Emit((float)_forwardDirection);
+                ApplyAngularVelocity(config, component);
+                ApplyVelocity(config, component);
             }
         }
 
         private float GetNextLaunchTime(EmittableConfig config) => 
-            Random.Range(config.minDelay, config.maxDelay);
+            Random.Range(config.delay.min, config.delay.max);
 
         private GameObject GetPrefabToSpawn(EmittableConfig config)
         {
@@ -60,10 +62,15 @@ namespace Code
         private Vector3 GetSpawnPosition() => 
             new Vector3(Random.Range(-_dividedLocalScaleX, _dividedLocalScaleX), 0f, transform.position.z);
 
-        private enum ForwardDirection
+        private void ApplyAngularVelocity(EmittableConfig config, IEmittable component) => 
+            component.Rigidbody.angularVelocity = Random.insideUnitSphere * Random.Range(config.rotationSpeed.min, config.rotationSpeed.max);
+
+        private void ApplyVelocity(EmittableConfig config, IEmittable component)
         {
-            Forward = 1,
-            Backward = -1
+            float deviationAngle = Random.Range(config.deviationAngle.min, config.deviationAngle.max);
+            float speed = -Random.Range(config.speed.min, config.speed.max);
+            
+            component.Rigidbody.velocity = new Vector3(deviationAngle, 0, speed);
         }
     }
 }
