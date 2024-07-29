@@ -4,6 +4,8 @@ using Code.Configs;
 using Code.Entities;
 using Code.Utils;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 using Random = UnityEngine.Random;
 
 namespace Code
@@ -13,7 +15,8 @@ namespace Code
         [SerializeField] private List<EmittableConfig> _emittableConfigs;
 
         private float _dividedLocalScaleX;
-        
+        private IObjectResolver _container;
+
         private void Awake()
         {
             Resize();
@@ -25,6 +28,10 @@ namespace Code
             foreach (EmittableConfig config in _emittableConfigs)
                 StartCoroutine(EmitCoroutine(config));
         }
+
+        [Inject]
+        public void Construct(IObjectResolver container) => 
+            _container = container;
 
         private void Resize()
         {
@@ -40,7 +47,7 @@ namespace Code
             {
                 yield return new WaitForSeconds(GetNextLaunchTime(config));
 
-                GameObject spawnedObject = Instantiate(GetPrefabToSpawn(config), GetSpawnPosition(), Quaternion.identity);
+                GameObject spawnedObject = _container.Instantiate(GetPrefabToSpawn(config), GetSpawnPosition(), Quaternion.identity);
                 IEmittable component = spawnedObject.GetComponent<IEmittable>();
                 
                 ApplyAngularVelocity(config, component);

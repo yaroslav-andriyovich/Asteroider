@@ -16,5 +16,15 @@ MonoBehaviour:
   - {fileID: 4251164174857805737, guid: b62bc95cd3a83c743907f38a1a886646, type: 3}
   - {fileID: 644929695885146477, guid: 52578d8b9a333fa4b8d81af9b8651219, type: 3}
   - {fileID: 4240415372443689878, guid: 774a72213802470498dfcc0d8daff6d0, type: 3}
-  minDelay: 0.1
-  maxDelay: 0.4
+  delay:
+    min: 0.1
+    max: 0.4
+  rotationSpeed:
+    min: 2
+    max: 4
+  speed:
+    min: 5
+    max: 25
+  deviationAngle:
+    min: -4
+    max: 4
