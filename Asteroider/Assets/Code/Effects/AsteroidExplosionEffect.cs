@@ -1,26 +1,26 @@
-using DG.Tweening;
+using Code.Pools;
 using UnityEngine;
 using VContainer;
 
 namespace Code.Effects
 {
-    public class AsteroidExplosionEffect : MonoBehaviour
+    public class AsteroidExplosionEffect : PoolableBase<AsteroidExplosionEffect>
     {
         [SerializeField] private ParticleSystem _particle;
-        
+
         private ExplosionAudioEffect _explosionAudioEffect;
-
-        private void Start()
-        {
-            _particle.Play();
-            _explosionAudioEffect.Play();
-
-            DOVirtual.DelayedCall(_particle.main.duration, () => 
-                Destroy(gameObject));
-        }
+        private MonoPool<AsteroidExplosionEffect> _pool;
 
         [Inject]
         public void Construct(ExplosionAudioEffect explosionAudioEffect) => 
             _explosionAudioEffect = explosionAudioEffect;
+
+        public void Play()
+        {
+            _particle.Play();
+            _explosionAudioEffect.Play();
+
+            Release(_particle.main.duration);
+        }
     }
 }

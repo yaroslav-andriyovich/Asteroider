@@ -1,4 +1,5 @@
 using Code.Effects;
+using Code.Pools;
 using Code.Utils;
 using UnityEngine;
 using VContainer;
@@ -9,19 +10,21 @@ namespace Code.Entities
     {
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
-        private AsteroidEffectSpawner _effectSpawner;
+        private MonoPool<AsteroidExplosionEffect> _explosionEffectsPool;
 
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag(GameTags.Player))
                 return;
 
-            _effectSpawner.Spawn(transform.position);
+            AsteroidExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
+            
+            effect.Play();
             Destroy(gameObject);
         }
 
         [Inject]
-        public void Construct(AsteroidEffectSpawner effectSpawner) => 
-            _effectSpawner = effectSpawner;
+        public void Construct(PoolService poolService) => 
+            _explosionEffectsPool = poolService.GetPool<AsteroidExplosionEffect>();
     }
 }
