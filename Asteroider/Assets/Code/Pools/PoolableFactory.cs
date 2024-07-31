@@ -6,6 +6,8 @@ namespace Code.Pools
 {
     public class PoolableFactory<T> : IPoolableFactory<T> where T : MonoBehaviour, IPoolable<T>
     {
+        public int PrefabId { get; }
+        
         protected readonly IObjectResolver _objectResolver;
         protected readonly T _prefab;
 
@@ -13,6 +15,7 @@ namespace Code.Pools
         {
             _objectResolver = objectResolver;
             _prefab = prefab;
+            PrefabId = _prefab.GetInstanceID();
         }
 
         public virtual T Create()

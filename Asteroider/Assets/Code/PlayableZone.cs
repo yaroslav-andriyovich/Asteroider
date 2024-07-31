@@ -1,3 +1,4 @@
+using Code.Pools;
 using Code.Utils;
 using UnityEngine;
 
@@ -10,8 +11,11 @@ namespace Code
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(GameTags.Asteroid))
-                Destroy(other.gameObject);
+            if (!other.CompareTag(GameTags.Asteroid))
+                return;
+            
+            if (other.TryGetComponent(out IPoolable poolable))
+                poolable.Release();
         }
     }
 }

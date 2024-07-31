@@ -6,7 +6,7 @@ using VContainer;
 
 namespace Code.Entities
 {
-    public class Asteroid : MonoBehaviour, IEmittable
+    public class Asteroid : PoolableBase<Asteroid>, IEmittable
     {
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
@@ -20,7 +20,7 @@ namespace Code.Entities
             AsteroidExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
             
             effect.Play();
-            Destroy(gameObject);
+            Release();
         }
 
         [Inject]

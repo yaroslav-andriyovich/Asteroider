@@ -11,7 +11,7 @@ namespace Code.Pools
         void IPoolable<T>.Initialize(Action<T> returnAction) => 
             _returnToPool = returnAction;
 
-        protected void Release() => 
+        public void Release() => 
             _returnToPool((T)this);
 
         protected void Release(float delay) => 

@@ -8,17 +8,17 @@ namespace Code.Pools
     public class MonoPool<T> where T : MonoBehaviour, IPoolable<T>
     {
         private readonly bool _autoExpand;
-        private readonly Transform _parent;
         private readonly IPoolableFactory<T> _poolableFactory;
 
+        private Transform _parent;
         private List<T> _pool;
 
         public MonoPool(IPoolableFactory<T> poolableFactory, int count, bool autoExpand = true)
         {
             _poolableFactory = poolableFactory;
             _autoExpand = autoExpand;
-            _parent = null;
-            
+
+            CreatePoolParent();
             CreatePool(count);
         }
         
@@ -47,8 +47,15 @@ namespace Code.Pools
         {
             element.gameObject.SetActive(false);
 
-            if (_parent != null)
-                element.transform.parent = _parent;
+            /*if (_parent != null)
+                element.transform.parent = _parent;*/
+        }
+
+        private void CreatePoolParent()
+        {
+            GameObject gameObject = new GameObject("[Pool] " + typeof(T).Name);
+
+            _parent = gameObject.transform;
         }
 
         private void CreatePool(int count)
@@ -62,8 +69,9 @@ namespace Code.Pools
         private T CreateObject(bool isActiveByDefault = false)
         {
             T createdObject = _poolableFactory.Create();
-
+            
             createdObject.gameObject.SetActive(isActiveByDefault);
+            createdObject.transform.parent = _parent;
             createdObject.Initialize(Release);
             
             _pool.Add(createdObject);
