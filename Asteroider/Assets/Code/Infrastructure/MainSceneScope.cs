@@ -6,9 +6,9 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Code
+namespace Code.Infrastructure
 {
-    public class GameLifetimeScope : LifetimeScope
+    public class MainSceneScope : LifetimeScope
     {
         [SerializeField] private Asteroid _asteroid1Prefab;
         [SerializeField] private Asteroid _asteroid2Prefab;
@@ -18,7 +18,6 @@ namespace Code
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<Bootstrap>();
             builder.Register<PoolService>(Lifetime.Singleton);
             builder.RegisterComponent(_explosionAudioEffect);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();
