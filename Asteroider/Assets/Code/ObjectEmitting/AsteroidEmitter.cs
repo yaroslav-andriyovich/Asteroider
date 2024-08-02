@@ -1,6 +1,7 @@
 using System.Collections;
 using Code.Entities;
-using Code.Pools;
+using Code.Entities.Ateroids;
+using Code.Services.Pools;
 using Code.Utils;
 using UnityEngine;
 using VContainer;

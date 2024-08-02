@@ -1,8 +1,9 @@
 using Code.Effects;
 using Code.Entities;
+using Code.Entities.Ateroids;
 using Code.Entities.Player;
 using Code.ObjectEmitting;
-using Code.Pools;
+using Code.Services.Pools;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
