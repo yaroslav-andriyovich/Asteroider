@@ -1,6 +1,4 @@
 using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using VContainer.Unity;
 
 namespace Code.Services.Input
@@ -12,19 +10,12 @@ namespace Code.Services.Input
         public InputService(InputActions inputActions)
         {
             _playerInput = inputActions.Player;
-            
-            Enable();
-            _playerInput.ShipMovement.performed += ShipMovementOnperformed;
-        }
 
-        private void ShipMovementOnperformed(InputAction.CallbackContext ctx)
-        {
-            Debug.Log(ctx.ReadValue<Vector2>());
+            Enable();
         }
 
         public void Tick()
         {
-            //IsTap = _isTouch || _playerInput.TapSimulationByKeyboard.IsPressed();
         }
 
         public void Dispose() =>

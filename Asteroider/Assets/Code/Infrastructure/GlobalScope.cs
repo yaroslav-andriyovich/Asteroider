@@ -20,7 +20,7 @@ namespace Code.Infrastructure
         private void RegisterInput(IContainerBuilder builder)
         {
             builder.Register<InputActions>(Lifetime.Singleton);
-            builder.RegisterEntryPoint<InputService>();
+            builder.Register<InputService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
         }
     }
 }

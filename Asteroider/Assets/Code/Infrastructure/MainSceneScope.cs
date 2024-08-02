@@ -1,5 +1,6 @@
 using Code.Effects;
 using Code.Entities;
+using Code.Entities.Player;
 using Code.ObjectEmitting;
 using Code.Pools;
 using UnityEngine;
@@ -10,9 +11,15 @@ namespace Code.Infrastructure
 {
     public class MainSceneScope : LifetimeScope
     {
+        [Header("Player")]
+        [SerializeField] private PlayerShip _playerShip;
+        
+        [Header("Asteroids")]
         [SerializeField] private Asteroid _asteroid1Prefab;
         [SerializeField] private Asteroid _asteroid2Prefab;
         [SerializeField] private Asteroid _asteroid3Prefab;
+
+        [Header("Effects")]
         [SerializeField] private ExplosionAudioEffect _explosionAudioEffect;
         [SerializeField] private AsteroidExplosionEffect _prefabExplosionEffect;
 
@@ -21,6 +28,8 @@ namespace Code.Infrastructure
             builder.Register<PoolService>(Lifetime.Singleton);
             builder.RegisterComponent(_explosionAudioEffect);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();
+
+            builder.RegisterComponent(_playerShip);
 
             builder.RegisterBuildCallback(resolver =>
             {
