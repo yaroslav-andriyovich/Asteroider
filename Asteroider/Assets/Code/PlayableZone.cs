@@ -6,14 +6,17 @@ namespace Code
 {
     public class PlayableZone : MonoBehaviour
     {
-        private void Awake() =>
-            transform.localScale = CameraUtils.GetStretchedSizeRelative();
+        private void Awake()
+        {
+            Vector3 stretchedSizeRelative = CameraUtils.GetStretchedSizeRelative();
+
+            stretchedSizeRelative.y = transform.localScale.y;
+            
+            transform.localScale = stretchedSizeRelative;
+        }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag(GameTags.Asteroid))
-                return;
-            
             if (other.TryGetComponent(out IPoolable poolable))
                 poolable.Release();
         }

@@ -6,12 +6,30 @@
             "id": "55b7d7d1-3157-4e48-af1e-ed0e84a58c8d",
             "actions": [
                 {
-                    "name": "ShipMovement",
+                    "name": "ShipMove",
                     "type": "PassThrough",
                     "id": "4e909484-3f46-4232-8081-cdef01141b86",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShipPrimaryShoot",
+                    "type": "Button",
+                    "id": "62f84ffc-ffca-45f4-ac59-b9a2f909c1d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShipSecondaryShoot",
+                    "type": "Button",
+                    "id": "4b9386a9-0588-4fb5-9ff8-15d349d7b6f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -23,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -34,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -45,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -56,7 +74,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -67,7 +85,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -78,7 +96,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -89,7 +107,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -100,7 +118,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -111,7 +129,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -122,9 +140,53 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShipMovement",
+                    "action": "ShipMove",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "44767ba1-e547-47cb-b129-b9abbc3cc5f2",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipPrimaryShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a774fe0-a686-4078-80fa-e2f454a162c3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipPrimaryShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c2ecccb-4899-4e4c-b0d6-78dc7584b0ee",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipSecondaryShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2fd7a6b-973f-4a45-b778-68bc890eed15",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipSecondaryShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

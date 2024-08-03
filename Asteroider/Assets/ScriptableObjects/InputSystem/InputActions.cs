@@ -28,12 +28,30 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""55b7d7d1-3157-4e48-af1e-ed0e84a58c8d"",
             ""actions"": [
                 {
-                    ""name"": ""ShipMovement"",
+                    ""name"": ""ShipMove"",
                     ""type"": ""PassThrough"",
                     ""id"": ""4e909484-3f46-4232-8081-cdef01141b86"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShipPrimaryShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""62f84ffc-ffca-45f4-ac59-b9a2f909c1d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShipSecondaryShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b9386a9-0588-4fb5-9ff8-15d349d7b6f7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -45,7 +63,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -56,7 +74,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -67,7 +85,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -78,7 +96,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -89,7 +107,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -100,7 +118,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -111,7 +129,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -122,7 +140,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -133,7 +151,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -144,9 +162,53 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShipMovement"",
+                    ""action"": ""ShipMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44767ba1-e547-47cb-b129-b9abbc3cc5f2"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipPrimaryShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a774fe0-a686-4078-80fa-e2f454a162c3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipPrimaryShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c2ecccb-4899-4e4c-b0d6-78dc7584b0ee"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipSecondaryShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2fd7a6b-973f-4a45-b778-68bc890eed15"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipSecondaryShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -155,7 +217,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_ShipMovement = m_Player.FindAction("ShipMovement", throwIfNotFound: true);
+        m_Player_ShipMove = m_Player.FindAction("ShipMove", throwIfNotFound: true);
+        m_Player_ShipPrimaryShoot = m_Player.FindAction("ShipPrimaryShoot", throwIfNotFound: true);
+        m_Player_ShipSecondaryShoot = m_Player.FindAction("ShipSecondaryShoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -217,12 +281,16 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_ShipMovement;
+    private readonly InputAction m_Player_ShipMove;
+    private readonly InputAction m_Player_ShipPrimaryShoot;
+    private readonly InputAction m_Player_ShipSecondaryShoot;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ShipMovement => m_Wrapper.m_Player_ShipMovement;
+        public InputAction @ShipMove => m_Wrapper.m_Player_ShipMove;
+        public InputAction @ShipPrimaryShoot => m_Wrapper.m_Player_ShipPrimaryShoot;
+        public InputAction @ShipSecondaryShoot => m_Wrapper.m_Player_ShipSecondaryShoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,16 +300,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @ShipMovement.started += instance.OnShipMovement;
-            @ShipMovement.performed += instance.OnShipMovement;
-            @ShipMovement.canceled += instance.OnShipMovement;
+            @ShipMove.started += instance.OnShipMove;
+            @ShipMove.performed += instance.OnShipMove;
+            @ShipMove.canceled += instance.OnShipMove;
+            @ShipPrimaryShoot.started += instance.OnShipPrimaryShoot;
+            @ShipPrimaryShoot.performed += instance.OnShipPrimaryShoot;
+            @ShipPrimaryShoot.canceled += instance.OnShipPrimaryShoot;
+            @ShipSecondaryShoot.started += instance.OnShipSecondaryShoot;
+            @ShipSecondaryShoot.performed += instance.OnShipSecondaryShoot;
+            @ShipSecondaryShoot.canceled += instance.OnShipSecondaryShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @ShipMovement.started -= instance.OnShipMovement;
-            @ShipMovement.performed -= instance.OnShipMovement;
-            @ShipMovement.canceled -= instance.OnShipMovement;
+            @ShipMove.started -= instance.OnShipMove;
+            @ShipMove.performed -= instance.OnShipMove;
+            @ShipMove.canceled -= instance.OnShipMove;
+            @ShipPrimaryShoot.started -= instance.OnShipPrimaryShoot;
+            @ShipPrimaryShoot.performed -= instance.OnShipPrimaryShoot;
+            @ShipPrimaryShoot.canceled -= instance.OnShipPrimaryShoot;
+            @ShipSecondaryShoot.started -= instance.OnShipSecondaryShoot;
+            @ShipSecondaryShoot.performed -= instance.OnShipSecondaryShoot;
+            @ShipSecondaryShoot.canceled -= instance.OnShipSecondaryShoot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -261,6 +341,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnShipMovement(InputAction.CallbackContext context);
+        void OnShipMove(InputAction.CallbackContext context);
+        void OnShipPrimaryShoot(InputAction.CallbackContext context);
+        void OnShipSecondaryShoot(InputAction.CallbackContext context);
     }
 }

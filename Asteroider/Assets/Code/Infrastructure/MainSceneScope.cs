@@ -1,6 +1,6 @@
 using Code.Effects;
-using Code.Entities;
 using Code.Entities.Ateroids;
+using Code.Entities.LazerBullets;
 using Code.Entities.Player;
 using Code.ObjectEmitting;
 using Code.Services.Pools;
@@ -14,6 +14,10 @@ namespace Code.Infrastructure
     {
         [Header("Player")]
         [SerializeField] private PlayerShip _playerShip;
+        
+        [Header("Lazer Bullet Prefabs")]
+        [SerializeField] private LazerBullet _playerPrimaryBullet;
+        [SerializeField] private LazerBullet _playerSecondaryBullet;
         
         [Header("Asteroids")]
         [SerializeField] private Asteroid _asteroid1Prefab;
@@ -40,11 +44,17 @@ namespace Code.Infrastructure
                 IPoolableFactory<Asteroid> asteroid1Factory = new PoolableFactory<Asteroid>(resolver, _asteroid1Prefab);
                 IPoolableFactory<Asteroid> asteroid2Factory = new PoolableFactory<Asteroid>(resolver, _asteroid2Prefab);
                 IPoolableFactory<Asteroid> asteroid3Factory = new PoolableFactory<Asteroid>(resolver, _asteroid3Prefab);
+                
+                IPoolableFactory<LazerBullet> playerPrimaryBulletFactory = new PoolableFactory<LazerBullet>(resolver, _playerPrimaryBullet);
+                IPoolableFactory<LazerBullet> playerSecondaryBulletFactory = new PoolableFactory<LazerBullet>(resolver, _playerSecondaryBullet);
 
                 poolService.CreatePool(explosionEffectFactory, 24);
                 poolService.CreatePool(asteroid1Factory, 8);
                 poolService.CreatePool(asteroid2Factory, 8);
                 poolService.CreatePool(asteroid3Factory, 8);
+                
+                poolService.CreatePool(playerPrimaryBulletFactory, 4);
+                poolService.CreatePool(playerSecondaryBulletFactory, 8);
             });
         }
     }

@@ -22,7 +22,7 @@ namespace Code.Entities.Player
         {
             _shipInput = shipInput;
 
-            InitInput();
+            InitializeInput();
         }
 
         public void FixedTick()
@@ -35,7 +35,7 @@ namespace Code.Entities.Player
         public void Dispose() => 
             _shipInput.performed -= OnMove;
 
-        private void InitInput() => 
+        private void InitializeInput() => 
             _shipInput.performed += OnMove;
 
         private void OnMove(InputAction.CallbackContext ctx) => 
