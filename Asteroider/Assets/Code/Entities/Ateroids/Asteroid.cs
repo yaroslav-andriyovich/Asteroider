@@ -15,7 +15,7 @@ namespace Code.Entities.Ateroids
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(GameTags.Player))
+            if (!other.CompareTag(GameTags.Player) && !other.CompareTag(GameTags.LazerBullet))
                 return;
 
             AsteroidExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
