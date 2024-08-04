@@ -8,17 +8,17 @@ namespace Code.Effects
     {
         [SerializeField] private ParticleSystem _particle;
 
-        private ExplosionAudioEffect _explosionAudioEffect;
+        private ExplosionAudio _explosionAudio;
         private MonoPool<AsteroidExplosionEffect> _pool;
 
         [Inject]
-        public void Construct(ExplosionAudioEffect explosionAudioEffect) => 
-            _explosionAudioEffect = explosionAudioEffect;
+        public void Construct(ExplosionAudio explosionAudio) => 
+            _explosionAudio = explosionAudio;
 
         public void Play()
         {
             _particle.Play();
-            _explosionAudioEffect.Play();
+            _explosionAudio.Play();
 
             Release(_particle.main.duration);
         }

@@ -28,13 +28,13 @@ namespace Code.Infrastructure
         [SerializeField] private Asteroid _asteroid3Prefab;
 
         [Header("Effects")]
-        [SerializeField] private ExplosionAudioEffect _explosionAudioEffect;
+        [SerializeField] private ExplosionAudio _explosionAudio;
         [SerializeField] private AsteroidExplosionEffect _prefabExplosionEffect;
 
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<PoolService>(Lifetime.Singleton);
-            builder.RegisterComponent(_explosionAudioEffect);
+            builder.RegisterComponent(_explosionAudio);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();
 
             builder.RegisterComponent(_playerShip);
