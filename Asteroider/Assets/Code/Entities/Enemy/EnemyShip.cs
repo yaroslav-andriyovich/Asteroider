@@ -15,18 +15,12 @@ namespace Code.Entities.Enemy
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
         [SerializeField] private LazerBullet _bulletPrefab;
-
-        [SerializeField] private ShipGun _leftGun;
-
-        [SerializeField] private ShipGun _rightGun;
+        [SerializeField] private ShipGun _gun;
 
         private MonoPool<AsteroidExplosionEffect> _explosionEffectsPool;
 
-        private void OnDisable()
-        {
-            _leftGun.Deactivate();
-            _rightGun.Deactivate();
-        }
+        private void OnDisable() => 
+            _gun.Deactivate();
 
         private void OnTriggerEnter(Collider other)
         {
@@ -62,14 +56,10 @@ namespace Code.Entities.Enemy
             
             MonoPool<LazerBullet> bulletsPool = poolService.GetPool(_bulletPrefab);
             
-            _leftGun.Initialize(bulletsPool, this);
-            _rightGun.Initialize(bulletsPool, this);
+            _gun.Initialize(bulletsPool, this);
         }
 
-        public void Emit()
-        {
-            _leftGun.Activate();
-            _rightGun.Activate();
-        }
+        public void Emit() => 
+            _gun.Activate();
     }
 }

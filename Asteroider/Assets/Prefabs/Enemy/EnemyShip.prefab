@@ -116,11 +116,10 @@ MonoBehaviour:
   <Rigidbody>k__BackingField: {fileID: 4863096324868649433}
   _bulletPrefab: {fileID: 7716860013432558412, guid: cb1c98aabf3fd3b4daf4e64854973ca4,
     type: 3}
-  _leftGun:
-    _gunPoint: {fileID: 4863096322997791392}
-    _reloadingTime: 1
-  _rightGun:
-    _gunPoint: {fileID: 4863096322920202844}
+  _gun:
+    _gunPoints:
+    - {fileID: 4863096322997791392}
+    - {fileID: 4863096322920202844}
     _reloadingTime: 1
 --- !u!54 &4863096324868649433
 Rigidbody:

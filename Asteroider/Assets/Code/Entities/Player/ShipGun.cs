@@ -10,7 +10,7 @@ namespace Code.Entities.Player
     [Serializable]
     public class ShipGun
     {
-        [SerializeField] private Transform _gunPoint;
+        [SerializeField] private Transform[] _gunPoints;
         [SerializeField] private float _reloadingTime;
 
         public event Action OnShot;
@@ -46,13 +46,16 @@ namespace Code.Entities.Player
         {
             while (true)
             {
-                Vector3 bulletPosition = new Vector3(_gunPoint.position.x, 0f, _gunPoint.position.z);
-                Quaternion bulletRotation = Quaternion.Euler(0f, _gunPoint.eulerAngles.y, 0f);
-                LazerBullet bullet = _bulletsPool.Get(bulletPosition, bulletRotation);
+                foreach (Transform point in _gunPoints)
+                {
+                    Vector3 bulletPosition = new Vector3(point.position.x, 0f, point.position.z);
+                    Quaternion bulletRotation = Quaternion.Euler(0f, point.eulerAngles.y, 0f);
+                    LazerBullet bullet = _bulletsPool.Get(bulletPosition, bulletRotation);
 
-                bullet.Rigidbody.velocity = bullet.transform.forward * bullet.Speed;
-                OnShot?.Invoke();
-                
+                    bullet.Rigidbody.velocity = bullet.transform.forward * bullet.Speed;
+                    OnShot?.Invoke();
+                }
+
                 yield return new WaitForSeconds(_reloadingTime);
             }
         }

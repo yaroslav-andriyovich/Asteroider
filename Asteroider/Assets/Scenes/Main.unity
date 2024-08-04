@@ -1709,13 +1709,13 @@ MonoBehaviour:
     _secondaryBulletPrefab: {fileID: 2961645184944776782, guid: 45158de6ac297fc4fae3520197555b47,
       type: 3}
     _primaryGun:
-      _gunPoint: {fileID: 891506251}
+      _gunPoints:
+      - {fileID: 891506251}
       _reloadingTime: 0.4
-    _secondaryLeftGun:
-      _gunPoint: {fileID: 19695170}
-      _reloadingTime: 0.2
-    _secondaryRightGun:
-      _gunPoint: {fileID: 207504603}
+    _secondaryGun:
+      _gunPoints:
+      - {fileID: 19695170}
+      - {fileID: 207504603}
       _reloadingTime: 0.2
     _primaryGunSound: {fileID: 891506252}
     _secondaryGunSound: {fileID: 19695171}

@@ -17,8 +17,7 @@ namespace Code.Entities.Player
         
         [Header("Guns")]
         [SerializeField] private ShipGun _primaryGun;
-        [SerializeField] private ShipGun _secondaryLeftGun;
-        [SerializeField] private ShipGun _secondaryRightGun;
+        [SerializeField] private ShipGun _secondaryGun;
 
         [Header("Gun sounds")]
         [SerializeField] private AudioSource _primaryGunSound;
@@ -35,11 +34,10 @@ namespace Code.Entities.Player
             MonoPool<LazerBullet> secondaryBulletsPool = _poolService.GetPool(_secondaryBulletPrefab);
             
             _primaryGun.Initialize(primaryBulletsPool, _coroutineRunner);
-            _secondaryLeftGun.Initialize(secondaryBulletsPool, _coroutineRunner);
-            _secondaryRightGun.Initialize(secondaryBulletsPool, _coroutineRunner);
+            _secondaryGun.Initialize(secondaryBulletsPool, _coroutineRunner);
             
             _primaryGun.OnShot += OnPrimaryGunShot;
-            _secondaryLeftGun.OnShot += OnSecondaryGunShot;
+            _secondaryGun.OnShot += OnSecondaryGunShot;
         }
 
         public void Dispose()
@@ -50,7 +48,7 @@ namespace Code.Entities.Player
             _inputSecondaryGun.canceled -= OnSecondaryGunDeactivated;
             
             _primaryGun.OnShot -= OnPrimaryGunShot;
-            _secondaryLeftGun.OnShot -= OnSecondaryGunShot;
+            _secondaryGun.OnShot -= OnSecondaryGunShot;
         }
 
         public void Initialize(InputAction inputShipPrimaryShoot, InputAction inputShipSecondaryShoot, PoolService poolService, ICoroutineRunner coroutineRunner)
@@ -71,27 +69,17 @@ namespace Code.Entities.Player
             _inputSecondaryGun.canceled += OnSecondaryGunDeactivated;
         }
 
-        private void OnPrimaryGunActivated(InputAction.CallbackContext ctx)
-        {
+        private void OnPrimaryGunActivated(InputAction.CallbackContext ctx) => 
             _primaryGun.Activate();
-        }
 
-        private void OnPrimaryGunDeactivated(InputAction.CallbackContext ctx)
-        {
+        private void OnPrimaryGunDeactivated(InputAction.CallbackContext ctx) => 
             _primaryGun.Deactivate();
-        }
 
-        private void OnSecondaryGunActivated(InputAction.CallbackContext ctx)
-        {
-            _secondaryLeftGun.Activate();
-            _secondaryRightGun.Activate();
-        }
+        private void OnSecondaryGunActivated(InputAction.CallbackContext ctx) => 
+            _secondaryGun.Activate();
 
-        private void OnSecondaryGunDeactivated(InputAction.CallbackContext ctx)
-        {
-            _secondaryLeftGun.Deactivate();
-            _secondaryRightGun.Deactivate();
-        }
+        private void OnSecondaryGunDeactivated(InputAction.CallbackContext ctx) => 
+            _secondaryGun.Deactivate();
 
         private void OnPrimaryGunShot()
         {
