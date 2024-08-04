@@ -12,6 +12,8 @@ namespace Code.Entities.Player
     {
         [SerializeField] private Transform _gunPoint;
         [SerializeField] private float _reloadingTime;
+
+        public event Action OnShot;
         
         private MonoPool<LazerBullet> _bulletsPool;
         private ICoroutineRunner _coroutineRunner;
@@ -49,6 +51,7 @@ namespace Code.Entities.Player
                 LazerBullet bullet = _bulletsPool.Get(bulletPosition, bulletRotation);
 
                 bullet.Rigidbody.velocity = bullet.transform.forward * bullet.Speed;
+                OnShot?.Invoke();
                 
                 yield return new WaitForSeconds(_reloadingTime);
             }
