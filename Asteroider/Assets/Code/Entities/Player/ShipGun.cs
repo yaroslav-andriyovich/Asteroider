@@ -33,6 +33,9 @@ namespace Code.Entities.Player
 
         public void Deactivate()
         {
+            if (_shootingRoutine == null)
+                return;
+            
             _coroutineRunner.StopCoroutine(_shootingRoutine);
             _shootingRoutine = null;
         }
@@ -41,13 +44,13 @@ namespace Code.Entities.Player
         {
             while (true)
             {
-                yield return new WaitForSeconds(_reloadingTime);
-
-                Vector3 bulletPosition = _gunPoint.position;
+                Vector3 bulletPosition = new Vector3(_gunPoint.position.x, 0f, _gunPoint.position.z);
                 Quaternion bulletRotation = Quaternion.Euler(0f, _gunPoint.eulerAngles.y, 0f);
                 LazerBullet bullet = _bulletsPool.Get(bulletPosition, bulletRotation);
-                
+
                 bullet.Rigidbody.velocity = bullet.transform.forward * bullet.Speed;
+                
+                yield return new WaitForSeconds(_reloadingTime);
             }
         }
     }
