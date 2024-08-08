@@ -20,6 +20,9 @@ namespace Code.Entities.Player
 
         public void Initialize(InputAction shipInput)
         {
+#if UNITY_EDITOR
+            _speed /= 2f;
+#endif
             _shipInput = shipInput;
 
             InitializeInput();
@@ -39,13 +42,19 @@ namespace Code.Entities.Player
             _shipInput.performed += OnMove;
 
         private void OnMove(InputAction.CallbackContext ctx) => 
-            _direction = ctx.ReadValue<Vector2>();
-
+            _direction = ctx.ReadValue<Vector3>();
+        
         private void SmoothInput() => 
             _smoothedDirection = Vector2.SmoothDamp(_smoothedDirection, _direction, ref _smoothedVelocity, SmoothTime);
 
-        private void Move() => 
+        private void Move()
+        {
+#if UNITY_EDITOR
             _rigidbody.velocity = new Vector3(_smoothedDirection.x, 0f, _smoothedDirection.y) * _speed;
+#else 
+            _rigidbody.velocity = new Vector3(_direction.x, 0f, _direction.y) * _speed;
+#endif
+        }
 
         private void Rotate() => 
             _rigidbody.rotation = Quaternion.Euler(_rigidbody.velocity.z, 0f, -_rigidbody.velocity.x);

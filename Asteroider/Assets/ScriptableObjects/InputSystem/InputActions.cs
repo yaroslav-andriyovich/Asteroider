@@ -31,7 +31,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""ShipMove"",
                     ""type"": ""PassThrough"",
                     ""id"": ""4e909484-3f46-4232-8081-cdef01141b86"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -59,7 +59,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Keyboard"",
                     ""id"": ""6dc01575-5a85-45bd-ad34-eadc4f7ba152"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""3DVector(mode=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -68,7 +68,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""Up"",
                     ""id"": ""50a7de6b-4c43-4e4e-aae1-d366191f75e1"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -79,7 +79,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
+                    ""name"": ""Down"",
                     ""id"": ""e8a65631-9239-4509-8daf-04f706ba7b42"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -90,7 +90,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""Left"",
                     ""id"": ""66cd4a78-c0b3-43d0-9b6f-1e6a10217298"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -101,7 +101,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""name"": ""Right"",
                     ""id"": ""3b99e417-c276-414f-89a5-788541178b58"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
@@ -112,63 +112,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""115d1486-4dae-4444-ba28-1d5a38758788"",
-                    ""path"": ""2DVector(mode=1)"",
+                    ""name"": """",
+                    ""id"": ""dec53caa-d81e-4480-958e-33c6133b6b0d"",
+                    ""path"": ""<Accelerometer>/acceleration"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ShipMove"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""ba2fcbbd-6396-4bd8-9e89-0d710a07998a"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""5a877657-73dd-419c-8db3-f5d641a36ace"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""ce3b1c6b-4908-47b9-9e93-bf3a0483f834"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""99da1182-7bfa-4060-a796-67f455626f03"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""44767ba1-e547-47cb-b129-b9abbc3cc5f2"",
+                    ""id"": ""2a774fe0-a686-4078-80fa-e2f454a162c3"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -179,30 +135,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2a774fe0-a686-4078-80fa-e2f454a162c3"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipPrimaryShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3c2ecccb-4899-4e4c-b0d6-78dc7584b0ee"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipSecondaryShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e2fd7a6b-973f-4a45-b778-68bc890eed15"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -37,18 +37,6 @@ namespace Code.Entities.Enemy
             Release();
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            if (!other.CompareTag(GameTags.PlayableZone))
-                return;
-
-            Vector3 velocity = Rigidbody.velocity;
-
-            velocity.x *= -1;
-
-            Rigidbody.velocity = velocity;
-        }
-
         [Inject]
         public void Construct(PoolService poolService)
         {

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.InputSystem;
 using VContainer.Unity;
 
 namespace Code.Services.Input
@@ -23,11 +24,17 @@ namespace Code.Services.Input
 
         public void Enable()
         {
+            if (Accelerometer.current != null)
+                InputSystem.EnableDevice(Accelerometer.current);
+            
             _playerInput.Enable();
         }
 
         public void Disable()
         {
+            if (Accelerometer.current != null)
+                InputSystem.DisableDevice(Accelerometer.current);
+            
             _playerInput.Disable();
         }
 

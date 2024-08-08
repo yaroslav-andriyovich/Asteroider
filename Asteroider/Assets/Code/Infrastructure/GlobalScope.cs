@@ -1,4 +1,5 @@
 using Code.Services.Input;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,6 +10,7 @@ namespace Code.Infrastructure
         protected override void Awake()
         {
             base.Awake();
+            Application.targetFrameRate = 60;
             DontDestroyOnLoad(this);
         }
 
