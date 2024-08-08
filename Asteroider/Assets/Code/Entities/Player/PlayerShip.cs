@@ -30,11 +30,11 @@ namespace Code.Entities.Player
         }
 
         [Inject]
-        public void Construct(InputService inputService, PoolService poolService)
+        public void Construct(InputService inputService, PoolService poolService, PlayableZone playableZone)
         {
             _input = inputService.GetPlayerInput();
             
-            _movement.Initialize(_input.ShipMove);
+            _movement.Initialize(_input.ShipMove, playableZone);
             _weapon.Initialize(_input.ShipPrimaryShoot, _input.ShipSecondaryShoot, poolService, this);
         }
     }

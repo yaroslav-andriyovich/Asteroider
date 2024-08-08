@@ -661,6 +661,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 347965269}
+  _playableZone: {fileID: 716887044}
   _playerShip: {fileID: 1987038462}
   _playerPrimaryBullet: {fileID: 7716860013432558412, guid: d0205b069433acc4f8f72f16eaac88f6,
     type: 3}

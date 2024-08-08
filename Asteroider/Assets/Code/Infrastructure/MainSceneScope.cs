@@ -13,6 +13,8 @@ namespace Code.Infrastructure
 {
     public class MainSceneScope : LifetimeScope
     {
+        [SerializeField] private PlayableZone _playableZone;
+        
         [Header("Player")]
         [SerializeField] private PlayerShip _playerShip;
         [SerializeField] private LazerBullet _playerPrimaryBullet;
@@ -35,6 +37,7 @@ namespace Code.Infrastructure
         {
             builder.Register<PoolService>(Lifetime.Singleton);
             builder.RegisterComponent(_explosionAudio);
+            builder.RegisterComponent(_playableZone);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();
 
             builder.RegisterComponent(_playerShip);

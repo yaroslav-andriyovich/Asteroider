@@ -18,32 +18,6 @@ namespace Code
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(GameTags.Player))
-            {
-                Vector3 position = other.transform.position;
-                
-                if (position.z <= transform.position.z - transform.localScale.z / 2f)
-                {
-                    position.z = transform.position.z - transform.localScale.z / 2f;
-                    other.transform.position = position;
-                }
-                else if (position.z >= transform.position.z + transform.localScale.z / 2f)
-                {
-                    position.z = transform.position.z + transform.localScale.z / 2f;
-                    other.transform.position = position;
-                }
-                else if (position.x <= transform.position.x - transform.localScale.x / 2f)
-                {
-                    position.x = transform.position.x - transform.localScale.x / 2f;
-                    other.transform.position = position;
-                }
-                else if (position.x >= transform.position.x + transform.localScale.x / 2f)
-                {
-                    position.x = transform.position.x + transform.localScale.x / 2f;
-                    other.transform.position = position;
-                }
-            }
-            
             if (other.TryGetComponent(out IPoolable poolable)
                 && (other.CompareTag(GameTags.LazerBullet) 
                     || other.transform.position.z <= transform.position.z - transform.localScale.z / 2f))

@@ -14,16 +14,18 @@ namespace Code.Entities.Player
         private const float SmoothTime = 0.16f;
         
         private InputAction _shipInput;
+        private PlayerMotionLimiter _motionLimiter;
         private Vector2 _direction;
         private Vector2 _smoothedDirection;
         private Vector2 _smoothedVelocity;
 
-        public void Initialize(InputAction shipInput)
+        public void Initialize(InputAction shipInput, PlayableZone playableZone)
         {
 #if UNITY_EDITOR
             _speed /= 2f;
 #endif
             _shipInput = shipInput;
+            _motionLimiter = new PlayerMotionLimiter(_rigidbody, playableZone);
 
             InitializeInput();
         }
@@ -32,6 +34,7 @@ namespace Code.Entities.Player
         {
             SmoothInput();
             Move();
+            _motionLimiter.FixedTick();
             Rotate();
         }
 
