@@ -1,12 +1,11 @@
 using UnityEngine;
 
-namespace Code.Utils
+namespace Code.Extensions
 {
-    public static class CameraUtils
+    public static class CameraExtension
     {
-        public static Vector3 GetStretchedSizeRelative()
+        public static Vector3 GetStretchedSizeRelative(this Camera camera)
         {
-            Camera camera = Camera.main;
             float height = 2f * camera.orthographicSize;
             float width = height * camera.aspect;
             

@@ -1,5 +1,5 @@
+using Code.Extensions;
 using Code.Services.Pools;
-using Code.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -28,7 +28,7 @@ namespace Code.ObjectEmitting
         {
             Vector3 scale = transform.localScale;
             
-            scale.x = CameraUtils.GetStretchedSizeRelative().x;
+            scale.x = Camera.main.GetStretchedSizeRelative().x;
             transform.localScale = scale;
         }
     }

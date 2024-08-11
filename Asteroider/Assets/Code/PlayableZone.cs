@@ -1,3 +1,4 @@
+using Code.Extensions;
 using Code.ObjectEmitting;
 using Code.Services.Pools;
 using Code.Utils;
@@ -9,7 +10,7 @@ namespace Code
     {
         private void Awake()
         {
-            Vector3 stretchedSizeRelative = CameraUtils.GetStretchedSizeRelative();
+            Vector3 stretchedSizeRelative = Camera.main.GetStretchedSizeRelative();
 
             stretchedSizeRelative.y = transform.localScale.y;
             
