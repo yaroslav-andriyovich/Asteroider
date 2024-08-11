@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d1ddfe77ef4e118da8fc39395fdb38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyShipPrefabs:
+  _objectPrefabs:
   - {fileID: 4863096324868649435, guid: 67a48f64f8cf51140b9734dd6c83f14c, type: 3}
   _interval:
     min: 5
@@ -514,6 +514,9 @@ MonoBehaviour:
   _deviationAngle:
     min: -2
     max: 2
+  _rotationSpeed:
+    min: 0
+    max: 0
 --- !u!1 &347965269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,22 +1368,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ecfbde1ed2d49069413231a20a1cb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidPrefabs:
+  _objectPrefabs:
   - {fileID: 6659994221427295362, guid: b62bc95cd3a83c743907f38a1a886646, type: 3}
   - {fileID: 6432655069721917583, guid: 52578d8b9a333fa4b8d81af9b8651219, type: 3}
   - {fileID: 2235565899272170246, guid: 774a72213802470498dfcc0d8daff6d0, type: 3}
   _interval:
     min: 0.3
     max: 0.5
-  _rotationSpeed:
-    min: 2
-    max: 5
   _speed:
     min: 5
     max: 25
   _deviationAngle:
     min: -4
     max: 4
+  _rotationSpeed:
+    min: 2
+    max: 5
 --- !u!1 &1527320705
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,7 @@ namespace Code.Infrastructure
                 
                 poolService.CreatePool(playerPrimaryBulletFactory, 4);
                 poolService.CreatePool(playerSecondaryBulletFactory, 8);
+                
                 poolService.CreatePool(enemyBulletFactory, 8);
                 poolService.CreatePool(enemyShipFactory, 2);
             });
