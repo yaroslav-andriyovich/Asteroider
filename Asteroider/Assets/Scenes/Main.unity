@@ -600,6 +600,7 @@ Transform:
   m_Children:
   - {fileID: 1493425543}
   - {fileID: 327871346}
+  - {fileID: 1906601434}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -679,6 +680,8 @@ MonoBehaviour:
   _asteroid2Prefab: {fileID: 6432655069721917583, guid: 52578d8b9a333fa4b8d81af9b8651219,
     type: 3}
   _asteroid3Prefab: {fileID: 2235565899272170246, guid: 774a72213802470498dfcc0d8daff6d0,
+    type: 3}
+  _bigAsteroidObstaclePrefab: {fileID: 3623492079819316510, guid: 34d58d2d28cc4d14f8633f30597fdbee,
     type: 3}
   _explosionAudio: {fileID: 1731665309905939370}
   _prefabExplosionEffect: {fileID: 2382702739610944533, guid: b64414d2b6b085244a090c85b6550c3f,
@@ -1636,6 +1639,64 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1741538299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1906601433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906601434}
+  - component: {fileID: 1906601435}
+  m_Layer: 0
+  m_Name: ObstacleEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1906601434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906601433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 347965273}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1906601435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906601433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8d9a056a374d29833d762bd7f28244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectPrefabs:
+  - {fileID: 3623492079819316510, guid: 34d58d2d28cc4d14f8633f30597fdbee, type: 3}
+  _interval:
+    min: 15
+    max: 30
+  _speed:
+    min: 4
+    max: 8
+  _deviationAngle:
+    min: 0
+    max: 2
+  _rotationSpeed:
+    min: 0.25
+    max: 2
 --- !u!1 &1987038457
 GameObject:
   m_ObjectHideFlags: 0

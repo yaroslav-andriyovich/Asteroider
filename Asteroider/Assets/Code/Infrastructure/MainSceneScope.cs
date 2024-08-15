@@ -2,6 +2,7 @@ using Code.Effects;
 using Code.Entities.Ateroids;
 using Code.Entities.Enemy;
 using Code.Entities.LazerBullets;
+using Code.Entities.Obstacles;
 using Code.Entities.Player;
 using Code.ObjectEmitting;
 using Code.Services.Pools;
@@ -29,6 +30,9 @@ namespace Code.Infrastructure
         [SerializeField] private Asteroid _asteroid2Prefab;
         [SerializeField] private Asteroid _asteroid3Prefab;
 
+        [Header("Obstacles")]
+        [SerializeField] private Obstacle _bigAsteroidObstaclePrefab;
+
         [Header("Effects")]
         [SerializeField] private ExplosionAudio _explosionAudio;
         [SerializeField] private AsteroidExplosionEffect _prefabExplosionEffect;
@@ -55,6 +59,8 @@ namespace Code.Infrastructure
                 IPoolableFactory<LazerBullet> playerSecondaryBulletFactory = new PoolableFactory<LazerBullet>(resolver, _playerSecondaryBullet);
                 IPoolableFactory<LazerBullet> enemyBulletFactory = new PoolableFactory<LazerBullet>(resolver, _enemyBullet);
                 IPoolableFactory<EnemyShip> enemyShipFactory = new PoolableFactory<EnemyShip>(resolver, _enemyShip);
+                
+                IPoolableFactory<Obstacle> bigAsteroidObstacleFactory = new PoolableFactory<Obstacle>(resolver, _bigAsteroidObstaclePrefab);
 
                 poolService.CreatePool(explosionEffectFactory, 24);
                 poolService.CreatePool(asteroid1Factory, 8);
@@ -66,6 +72,8 @@ namespace Code.Infrastructure
                 
                 poolService.CreatePool(enemyBulletFactory, 8);
                 poolService.CreatePool(enemyShipFactory, 2);
+                
+                poolService.CreatePool(bigAsteroidObstacleFactory, 1);
             });
         }
     }
