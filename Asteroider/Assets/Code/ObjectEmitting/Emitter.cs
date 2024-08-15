@@ -1,42 +1,29 @@
 using System.Collections;
-using Code.Services.Pools;
 using Code.Utils;
 using UnityEngine;
 using VContainer;
 
 namespace Code.ObjectEmitting
 {
-    public class MonoEmitter<T> : MonoBehaviour where T : MonoBehaviour, IEmittable, IPoolable<T>
+    public class Emitter<T> : MonoBehaviour where T : MonoBehaviour, IEmittable
     {
-        [SerializeField] private T[] _objectPrefabs;
+        [SerializeField] protected T[] _objectPrefabs;
 
-        [SerializeField] private MinMaxFloat _interval;
-        [SerializeField] private MinMaxFloat _speed;
-        [SerializeField] private MinMaxFloat _deviationAngle;
-        [SerializeField] private MinMaxFloat _rotationSpeed;
-        
+        [SerializeField] protected MinMaxFloat _interval;
+        [SerializeField] protected MinMaxFloat _speed;
+        [SerializeField] protected MinMaxFloat _deviationAngle;
+        [SerializeField] protected MinMaxFloat _rotationSpeed;
+
         private ObjectEmittingZone _emittingZone;
-        private PoolService _poolService;
-        private MonoPool<T>[] _objectPools;
 
-        private void Start()
-        {
-            _objectPools = new MonoPool<T>[_objectPrefabs.Length];
-
-            for (int i = 0; i < _objectPrefabs.Length; i++)
-                _objectPools[i] = _poolService.GetPool(_objectPrefabs[i]);
-            
+        protected virtual void Start() => 
             StartCoroutine(EmittingRoutine());
-        }
 
         [Inject]
-        public void Construct(ObjectEmittingZone emittingZone, PoolService poolService)
-        {
+        public void Construct(ObjectEmittingZone emittingZone) => 
             _emittingZone = emittingZone;
-            _poolService = poolService;
-        }
 
-        private IEnumerator EmittingRoutine()
+        protected IEnumerator EmittingRoutine()
         {
             while (true)
             {
@@ -56,8 +43,8 @@ namespace Code.ObjectEmitting
         private float GetInterval() => 
             Random.Range(_interval.min, _interval.max);
 
-        private T GetRandomObject() => 
-            _objectPools[Random.Range(0, _objectPools.Length)].Get();
+        protected virtual T GetRandomObject() => 
+            _objectPrefabs[Random.Range(0, _objectPrefabs.Length)];
 
         private void SetPosition(T obj) => 
             obj.transform.position = _emittingZone.GetRandomPosition();
