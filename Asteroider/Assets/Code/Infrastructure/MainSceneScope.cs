@@ -17,7 +17,6 @@ namespace Code.Infrastructure
         [SerializeField] private PlayableZone _playableZone;
         
         [Header("Player")]
-        [SerializeField] private PlayerShip _playerShip;
         [SerializeField] private LazerBullet _playerPrimaryBullet;
         [SerializeField] private LazerBullet _playerSecondaryBullet;
         
@@ -43,8 +42,6 @@ namespace Code.Infrastructure
             builder.RegisterComponent(_explosionAudio);
             builder.RegisterComponent(_playableZone);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();
-
-            builder.RegisterComponent(_playerShip);
 
             builder.RegisterBuildCallback(resolver =>
             {

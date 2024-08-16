@@ -19,7 +19,7 @@ namespace Code.Entities.Player
         private ICoroutineRunner _coroutineRunner;
         private Coroutine _shootingRoutine;
 
-        public void Initialize(MonoPool<LazerBullet> bulletsPool, ICoroutineRunner coroutineRunner)
+        public void Construct(MonoPool<LazerBullet> bulletsPool, ICoroutineRunner coroutineRunner)
         {
             _bulletsPool = bulletsPool;
             _coroutineRunner = coroutineRunner;

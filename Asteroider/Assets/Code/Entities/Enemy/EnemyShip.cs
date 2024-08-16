@@ -44,7 +44,7 @@ namespace Code.Entities.Enemy
             
             MonoPool<LazerBullet> bulletsPool = poolService.GetPool(_bulletPrefab);
             
-            _gun.Initialize(bulletsPool, this);
+            _gun.Construct(bulletsPool, this);
         }
 
         public void Emit() => 

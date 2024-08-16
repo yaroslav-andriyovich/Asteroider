@@ -1,36 +1,24 @@
-using System;
+using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VContainer.Unity;
+using VContainer;
 
 namespace Code.Entities.Player
 {
-    [Serializable]
-    public class PlayerShipMovement : IFixedTickable, IDisposable
+    public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _speed;
 
         private const float SmoothTime = 0.16f;
-        
+
         private InputAction _shipInput;
         private PlayerMotionLimiter _motionLimiter;
         private Vector2 _direction;
         private Vector2 _smoothedDirection;
         private Vector2 _smoothedVelocity;
 
-        public void Initialize(InputAction shipInput, PlayableZone playableZone)
-        {
-#if UNITY_EDITOR
-            _speed /= 2f;
-#endif
-            _shipInput = shipInput;
-            _motionLimiter = new PlayerMotionLimiter(_rigidbody, playableZone);
-
-            InitializeInput();
-        }
-
-        public void FixedTick()
+        private void FixedUpdate()
         {
             SmoothInput();
             Move();
@@ -38,11 +26,19 @@ namespace Code.Entities.Player
             Rotate();
         }
 
-        public void Dispose() => 
+        private void OnDestroy() => 
             _shipInput.performed -= OnMove;
 
-        private void InitializeInput() => 
+        [Inject]
+        public void Construct(InputService inputService, PlayableZone playableZone)
+        {
+#if UNITY_EDITOR
+            _speed /= 2f;
+#endif
+            _shipInput = inputService.GetPlayerInput().ShipMove;
             _shipInput.performed += OnMove;
+            _motionLimiter = new PlayerMotionLimiter(_rigidbody, playableZone);
+        }
 
         private void OnMove(InputAction.CallbackContext ctx) => 
             _direction = ctx.ReadValue<Vector3>();

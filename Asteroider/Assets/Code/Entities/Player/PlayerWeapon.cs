@@ -1,15 +1,14 @@
-using System;
 using Code.Entities.LazerBullets;
 using Code.Infrastructure;
+using Code.Services.Input;
 using Code.Services.Pools;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VContainer.Unity;
+using VContainer;
 
 namespace Code.Entities.Player
 {
-    [Serializable]
-    public class ShipWeaponController : IStartable, IDisposable
+    public class PlayerWeapon : MonoBehaviour, ICoroutineRunner
     {
         [Header("Bullet prefabs")]
         [SerializeField] private LazerBullet _primaryBulletPrefab;
@@ -26,21 +25,20 @@ namespace Code.Entities.Player
         private PoolService _poolService;
         private InputAction _inputPrimaryGun;
         private InputAction _inputSecondaryGun;
-        private ICoroutineRunner _coroutineRunner;
 
-        public void Start()
+        private void Start()
         {
             MonoPool<LazerBullet> primaryBulletsPool = _poolService.GetPool(_primaryBulletPrefab);
             MonoPool<LazerBullet> secondaryBulletsPool = _poolService.GetPool(_secondaryBulletPrefab);
             
-            _primaryGun.Initialize(primaryBulletsPool, _coroutineRunner);
-            _secondaryGun.Initialize(secondaryBulletsPool, _coroutineRunner);
+            _primaryGun.Construct(primaryBulletsPool, this);
+            _secondaryGun.Construct(secondaryBulletsPool, this);
             
             _primaryGun.OnShot += OnPrimaryGunShot;
             _secondaryGun.OnShot += OnSecondaryGunShot;
         }
 
-        public void Dispose()
+        private void OnDestroy()
         {
             _inputPrimaryGun.started -= OnPrimaryGunActivated;
             _inputPrimaryGun.canceled -= OnPrimaryGunDeactivated;
@@ -51,12 +49,14 @@ namespace Code.Entities.Player
             _secondaryGun.OnShot -= OnSecondaryGunShot;
         }
 
-        public void Initialize(InputAction inputShipPrimaryShoot, InputAction inputShipSecondaryShoot, PoolService poolService, ICoroutineRunner coroutineRunner)
+        [Inject]
+        public void Construct(InputService inputService, PoolService poolService)
         {
+            InputActions.PlayerActions playerActions = inputService.GetPlayerInput();
+
+            _inputPrimaryGun = playerActions.ShipPrimaryShoot;
+            _inputSecondaryGun = playerActions.ShipSecondaryShoot;
             _poolService = poolService;
-            _inputPrimaryGun = inputShipPrimaryShoot;
-            _inputSecondaryGun = inputShipSecondaryShoot;
-            _coroutineRunner = coroutineRunner;
 
             InitializeInput();
         }
