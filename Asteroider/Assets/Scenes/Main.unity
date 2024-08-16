@@ -508,8 +508,25 @@ MonoBehaviour:
   - {fileID: 347965269}
   - {fileID: 1191714849}
   _playableZone: {fileID: 716887044}
-  _playerShip: {fileID: 6254538063486876232, guid: b25f1dc89762c274f9e91807368e07bf,
-    type: 3}
+  _scenePoolInitializer:
+    _playerPrimaryBullet: {fileID: 7716860013432558412, guid: d0205b069433acc4f8f72f16eaac88f6,
+      type: 3}
+    _playerSecondaryBullet: {fileID: 2961645184944776782, guid: 45158de6ac297fc4fae3520197555b47,
+      type: 3}
+    _enemyShip: {fileID: 4863096324868649435, guid: 67a48f64f8cf51140b9734dd6c83f14c,
+      type: 3}
+    _enemyBullet: {fileID: 7716860013432558412, guid: cb1c98aabf3fd3b4daf4e64854973ca4,
+      type: 3}
+    _asteroid1Prefab: {fileID: 6659994221427295362, guid: b62bc95cd3a83c743907f38a1a886646,
+      type: 3}
+    _asteroid2Prefab: {fileID: 6432655069721917583, guid: 52578d8b9a333fa4b8d81af9b8651219,
+      type: 3}
+    _asteroid3Prefab: {fileID: 2235565899272170246, guid: 774a72213802470498dfcc0d8daff6d0,
+      type: 3}
+    _bigAsteroidObstaclePrefab: {fileID: 3623492079819316510, guid: 34d58d2d28cc4d14f8633f30597fdbee,
+      type: 3}
+    _prefabExplosionEffect: {fileID: 2382702739610944533, guid: b64414d2b6b085244a090c85b6550c3f,
+      type: 3}
   _playerPrimaryBullet: {fileID: 7716860013432558412, guid: d0205b069433acc4f8f72f16eaac88f6,
     type: 3}
   _playerSecondaryBullet: {fileID: 2961645184944776782, guid: 45158de6ac297fc4fae3520197555b47,
