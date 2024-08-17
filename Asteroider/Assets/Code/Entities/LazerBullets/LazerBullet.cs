@@ -1,4 +1,5 @@
 using Code.Effects;
+using Code.Entities.Components;
 using Code.Services.Pools;
 using Code.Utils;
 using UnityEngine;
@@ -11,11 +12,13 @@ namespace Code.Entities.LazerBullets
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }
 
-        private MonoPool<AsteroidExplosionEffect> _explosionEffectsPool;
+        [SerializeField] private float _damage;
+
+        private MonoPool<ExplosionEffect> _explosionEffectsPool;
 
         [Inject]
         public void Construct(PoolService poolService) =>
-            _explosionEffectsPool = poolService.GetPool<AsteroidExplosionEffect>();
+            _explosionEffectsPool = poolService.GetPool<ExplosionEffect>();
 
         private void OnTriggerEnter(Collider other)
         {
@@ -24,7 +27,10 @@ namespace Code.Entities.LazerBullets
 
             if (!other.CompareTag(GameTags.Asteroid))
             {
-                AsteroidExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
+                if (other.TryGetComponent(out IDamagable damagable))
+                    damagable.TakeDamage(_damage);
+                
+                ExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
 
                 effect.Play();
             }

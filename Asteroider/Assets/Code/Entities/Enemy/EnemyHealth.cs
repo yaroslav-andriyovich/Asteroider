@@ -2,9 +2,9 @@ using System;
 using Code.Entities.Components;
 using UnityEngine;
 
-namespace Code.Entities.Player
+namespace Code.Entities.Enemy
 {
-    public class PlayerHealth : MonoBehaviour, IHealth
+    public class EnemyHealth : MonoBehaviour, IHealth
     {
         [field: SerializeField] public float Max { get; private set; }
 
@@ -21,14 +21,14 @@ namespace Code.Entities.Player
 
         private float _current;
 
-        private void Start() => 
+        private void OnEnable() => 
             Current = Max;
 
         public void TakeDamage(float damage)
         {
             if (damage < 0)
                 throw new InvalidOperationException("Damage value < 0!");
-            
+
             Current = Mathf.Max(0, Current - damage);
         }
     }

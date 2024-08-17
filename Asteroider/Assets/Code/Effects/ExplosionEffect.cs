@@ -4,12 +4,12 @@ using VContainer;
 
 namespace Code.Effects
 {
-    public class AsteroidExplosionEffect : PoolableBase<AsteroidExplosionEffect>
+    public class ExplosionEffect : PoolableBase<ExplosionEffect>
     {
         [SerializeField] private ParticleSystem _particle;
 
         private ExplosionAudio _explosionAudio;
-        private MonoPool<AsteroidExplosionEffect> _pool;
+        private MonoPool<ExplosionEffect> _pool;
 
         [Inject]
         public void Construct(ExplosionAudio explosionAudio) => 

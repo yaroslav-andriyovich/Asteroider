@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Rigidbody>k__BackingField: {fileID: 2816139851806094197}
   <Speed>k__BackingField: 45
+  _damage: 30
 --- !u!54 &2816139851806094197
 Rigidbody:
   m_ObjectHideFlags: 0

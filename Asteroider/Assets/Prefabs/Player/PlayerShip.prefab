@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 6254538063486876596}
   - component: {fileID: 6254538063486876599}
   - component: {fileID: 6254538063486876597}
+  - component: {fileID: 9136347144455068999}
   - component: {fileID: 6254538063486876237}
   - component: {fileID: 6254538063486876233}
   - component: {fileID: 6254538063486876598}
@@ -220,6 +221,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41319d40e3d54bf8b7d4a1ec7fbb433a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9136347144455068999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254538063486876239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06db89eb03e84ec29949d1c16c20a2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 6114264866075326843}
@@ -578,7 +591,7 @@ PrefabInstance:
     - target: {fileID: 4197587828877799419, guid: 50b25570538403a4189bb38ee28ec52d,
         type: 3}
       propertyPath: m_Name
-      value: Armor Canvas
+      value: Shield Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 4197587828877799419, guid: 50b25570538403a4189bb38ee28ec52d,
         type: 3}

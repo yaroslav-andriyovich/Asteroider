@@ -29146,7 +29146,7 @@ GameObject:
   - component: {fileID: 2382702739610944532}
   - component: {fileID: 2382702739610944533}
   m_Layer: 0
-  m_Name: AsteroidExplosionEffect
+  m_Name: ExplosionEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

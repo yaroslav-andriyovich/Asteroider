@@ -30,13 +30,13 @@ namespace Code
         [SerializeField] private Obstacle _bigAsteroidObstaclePrefab;
 
         [Header("Effects")]
-        [SerializeField] private AsteroidExplosionEffect _prefabExplosionEffect;
+        [SerializeField] private ExplosionEffect _prefabExplosionEffect;
 
         public void Initialize(IObjectResolver resolver)
         {
             PoolService poolService = resolver.Resolve<PoolService>();
                 
-            IPoolableFactory<AsteroidExplosionEffect> explosionEffectFactory = new PoolableFactory<AsteroidExplosionEffect>(resolver, _prefabExplosionEffect);
+            IPoolableFactory<ExplosionEffect> explosionEffectFactory = new PoolableFactory<ExplosionEffect>(resolver, _prefabExplosionEffect);
             IPoolableFactory<Asteroid> asteroid1Factory = new PoolableFactory<Asteroid>(resolver, _asteroid1Prefab);
             IPoolableFactory<Asteroid> asteroid2Factory = new PoolableFactory<Asteroid>(resolver, _asteroid2Prefab);
             IPoolableFactory<Asteroid> asteroid3Factory = new PoolableFactory<Asteroid>(resolver, _asteroid3Prefab);

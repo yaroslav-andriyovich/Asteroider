@@ -7,7 +7,5 @@ namespace Code.Entities.Components
         event Action OnChanged;
         float Max { get; }
         float Current { get; }
-
-        void Heal(float heal);
     }
 }
