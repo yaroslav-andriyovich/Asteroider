@@ -442,6 +442,7 @@ Transform:
   - {fileID: 1493425543}
   - {fileID: 327871346}
   - {fileID: 1906601434}
+  - {fileID: 1791269691}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -507,7 +508,6 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 347965269}
   - {fileID: 1191714849}
-  _playableZone: {fileID: 716887044}
   _scenePoolInitializer:
     _playerPrimaryBullet: {fileID: 7716860013432558412, guid: d0205b069433acc4f8f72f16eaac88f6,
       type: 3}
@@ -527,25 +527,8 @@ MonoBehaviour:
       type: 3}
     _prefabExplosionEffect: {fileID: 2382702739610944533, guid: b64414d2b6b085244a090c85b6550c3f,
       type: 3}
-  _playerPrimaryBullet: {fileID: 7716860013432558412, guid: d0205b069433acc4f8f72f16eaac88f6,
-    type: 3}
-  _playerSecondaryBullet: {fileID: 2961645184944776782, guid: 45158de6ac297fc4fae3520197555b47,
-    type: 3}
-  _enemyShip: {fileID: 4863096324868649435, guid: 67a48f64f8cf51140b9734dd6c83f14c,
-    type: 3}
-  _enemyBullet: {fileID: 7716860013432558412, guid: cb1c98aabf3fd3b4daf4e64854973ca4,
-    type: 3}
-  _asteroid1Prefab: {fileID: 6659994221427295362, guid: b62bc95cd3a83c743907f38a1a886646,
-    type: 3}
-  _asteroid2Prefab: {fileID: 6432655069721917583, guid: 52578d8b9a333fa4b8d81af9b8651219,
-    type: 3}
-  _asteroid3Prefab: {fileID: 2235565899272170246, guid: 774a72213802470498dfcc0d8daff6d0,
-    type: 3}
-  _bigAsteroidObstaclePrefab: {fileID: 3623492079819316510, guid: 34d58d2d28cc4d14f8633f30597fdbee,
-    type: 3}
+  _playableZone: {fileID: 716887044}
   _explosionAudio: {fileID: 1731665309905939370}
-  _prefabExplosionEffect: {fileID: 2382702739610944533, guid: b64414d2b6b085244a090c85b6550c3f,
-    type: 3}
 --- !u!1 &484528882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,8 +1001,8 @@ MonoBehaviour:
   - {fileID: 6432655069721917583, guid: 52578d8b9a333fa4b8d81af9b8651219, type: 3}
   - {fileID: 2235565899272170246, guid: 774a72213802470498dfcc0d8daff6d0, type: 3}
   _interval:
-    min: 0.3
-    max: 0.5
+    min: 0.5
+    max: 1
   _speed:
     min: 5
     max: 25
@@ -1281,6 +1264,64 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1741538299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1791269690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1791269691}
+  - component: {fileID: 1791269692}
+  m_Layer: 0
+  m_Name: LootableAsteroidEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1791269691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791269690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 347965273}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1791269692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791269690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e9c734aeda4415a7231de914481b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectPrefabs:
+  - {fileID: -2117540923585100573, guid: cd1465daf3a50b544af8d68b1b7ed2c3, type: 3}
+  _interval:
+    min: 5
+    max: 20
+  _speed:
+    min: 5
+    max: 25
+  _deviationAngle:
+    min: 0
+    max: 2
+  _rotationSpeed:
+    min: 2
+    max: 5
 --- !u!1 &1906601433
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Entities.Player
 {
-    public class PlayerDamage : MonoBehaviour, IDamagable
+    public class PlayerDamageReceiver : MonoBehaviour, IDamageable
     {
         private IHealth _health;
         private IShield _shield;

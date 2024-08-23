@@ -27,8 +27,8 @@ namespace Code.Entities.LazerBullets
 
             if (!other.CompareTag(GameTags.Asteroid))
             {
-                if (other.TryGetComponent(out IDamagable damagable))
-                    damagable.TakeDamage(_damage);
+                if (other.TryGetComponent(out IDamageable damageable))
+                    damageable.TakeDamage(_damage);
                 
                 ExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
 

@@ -2,6 +2,7 @@ using System.Collections;
 using Code.Utils;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace Code.ObjectEmitting
 {
@@ -15,13 +16,17 @@ namespace Code.ObjectEmitting
         [SerializeField] protected MinMaxFloat _rotationSpeed;
 
         private ObjectEmittingZone _emittingZone;
+        private IObjectResolver _objectResolver;
 
         protected virtual void Start() => 
             StartCoroutine(EmittingRoutine());
 
         [Inject]
-        public void Construct(ObjectEmittingZone emittingZone) => 
+        public void Construct(IObjectResolver objectResolver, ObjectEmittingZone emittingZone)
+        {
+            _objectResolver = objectResolver;
             _emittingZone = emittingZone;
+        }
 
         protected IEnumerator EmittingRoutine()
         {
@@ -44,7 +49,7 @@ namespace Code.ObjectEmitting
             Random.Range(_interval.min, _interval.max);
 
         protected virtual T GetRandomObject() => 
-            _objectPrefabs[Random.Range(0, _objectPrefabs.Length)];
+            _objectResolver.Instantiate(_objectPrefabs[Random.Range(0, _objectPrefabs.Length)]);
 
         private void SetPosition(T obj) => 
             obj.transform.position = _emittingZone.GetRandomPosition();

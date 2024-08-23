@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Entities.Enemy
 {
-    public class EnemyHealth : MonoBehaviour, IHealth
+    public class EnemyHealth : MonoBehaviour, IHealth, IDamageable
     {
         [field: SerializeField] public float Max { get; private set; }
 
@@ -22,7 +22,7 @@ namespace Code.Entities.Enemy
         private float _current;
 
         private void OnEnable() => 
-            Current = Max;
+            Restore();
 
         public void TakeDamage(float damage)
         {
@@ -31,5 +31,8 @@ namespace Code.Entities.Enemy
 
             Current = Mathf.Max(0, Current - damage);
         }
+
+        public void Restore() => 
+            Current = Max;
     }
 }

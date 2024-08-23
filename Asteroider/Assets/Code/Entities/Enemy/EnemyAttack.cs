@@ -16,7 +16,7 @@ namespace Code.Entities.Enemy
         
         private void OnTrigger(Collider other)
         {
-            if (other.TryGetComponent(out IDamagable damagable))
+            if (other.TryGetComponent(out IDamageable damagable))
                 damagable.TakeDamage(_collisionDamage);
         }
     }

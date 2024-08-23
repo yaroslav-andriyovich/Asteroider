@@ -34,7 +34,10 @@ namespace Code
 
                 velocity.x *= -1;
                 emittable.Rigidbody.velocity = velocity;
+                return;
             }
+            
+            Destroy(other.gameObject);
         }
     }
 }

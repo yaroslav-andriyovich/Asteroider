@@ -1,6 +1,7 @@
 using System;
 using Code.Effects;
 using Code.Entities.Ateroids;
+using Code.Entities.Ateroids.Poolable;
 using Code.Entities.Enemy;
 using Code.Entities.LazerBullets;
 using Code.Entities.Obstacles;
@@ -22,9 +23,9 @@ namespace Code
         [SerializeField] private LazerBullet _enemyBullet;
         
         [Header("Asteroids")]
-        [SerializeField] private Asteroid _asteroid1Prefab;
-        [SerializeField] private Asteroid _asteroid2Prefab;
-        [SerializeField] private Asteroid _asteroid3Prefab;
+        [SerializeField] private PoolableAsteroid _asteroid1Prefab;
+        [SerializeField] private PoolableAsteroid _asteroid2Prefab;
+        [SerializeField] private PoolableAsteroid _asteroid3Prefab;
 
         [Header("Obstacles")]
         [SerializeField] private Obstacle _bigAsteroidObstaclePrefab;
@@ -37,9 +38,9 @@ namespace Code
             PoolService poolService = resolver.Resolve<PoolService>();
                 
             IPoolableFactory<ExplosionEffect> explosionEffectFactory = new PoolableFactory<ExplosionEffect>(resolver, _prefabExplosionEffect);
-            IPoolableFactory<Asteroid> asteroid1Factory = new PoolableFactory<Asteroid>(resolver, _asteroid1Prefab);
-            IPoolableFactory<Asteroid> asteroid2Factory = new PoolableFactory<Asteroid>(resolver, _asteroid2Prefab);
-            IPoolableFactory<Asteroid> asteroid3Factory = new PoolableFactory<Asteroid>(resolver, _asteroid3Prefab);
+            IPoolableFactory<PoolableAsteroid> asteroid1Factory = new PoolableFactory<PoolableAsteroid>(resolver, _asteroid1Prefab);
+            IPoolableFactory<PoolableAsteroid> asteroid2Factory = new PoolableFactory<PoolableAsteroid>(resolver, _asteroid2Prefab);
+            IPoolableFactory<PoolableAsteroid> asteroid3Factory = new PoolableFactory<PoolableAsteroid>(resolver, _asteroid3Prefab);
                 
             IPoolableFactory<LazerBullet> playerPrimaryBulletFactory = new PoolableFactory<LazerBullet>(resolver, _playerPrimaryBullet);
             IPoolableFactory<LazerBullet> playerSecondaryBulletFactory = new PoolableFactory<LazerBullet>(resolver, _playerSecondaryBullet);

@@ -22,7 +22,7 @@ namespace Code.Entities.Player
         private float _current;
 
         private void Start() => 
-            Current = Max;
+            Restore();
 
         public void TakeDamage(float damage)
         {
@@ -31,5 +31,8 @@ namespace Code.Entities.Player
             
             Current = Mathf.Max(0, Current - damage);
         }
+
+        public void Restore() => 
+            Current = Max;
     }
 }
