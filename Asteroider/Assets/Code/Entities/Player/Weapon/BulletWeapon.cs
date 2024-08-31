@@ -1,47 +1,50 @@
 using System;
 using System.Collections;
 using Code.Entities.LazerBullets;
-using Code.Infrastructure;
 using Code.Services.Pools;
 using UnityEngine;
+using VContainer;
 
-namespace Code.Entities.Player
+namespace Code.Entities.Player.Weapon
 {
     [Serializable]
-    public class ShipGun
+    public class BulletWeapon : MonoBehaviour, IWeapon
     {
+        [SerializeField] private LazerBullet _bulletPrefab;
+        [SerializeField] private AudioSource _audio;
         [SerializeField] private Transform[] _gunPoints;
         [SerializeField] private float _reloadingTime;
 
-        public event Action OnShot;
-        
+        public event Action OnFire;
+        public bool IsActive => _shootingRoutine != null;
+
         private MonoPool<LazerBullet> _bulletsPool;
-        private ICoroutineRunner _coroutineRunner;
         private Coroutine _shootingRoutine;
 
-        public void Construct(MonoPool<LazerBullet> bulletsPool, ICoroutineRunner coroutineRunner)
-        {
-            _bulletsPool = bulletsPool;
-            _coroutineRunner = coroutineRunner;
-        }
+        [Inject]
+        public void Construct(PoolService poolService) => 
+            _bulletsPool = poolService.GetPool(_bulletPrefab);
 
         public void Activate()
         {
             if (_shootingRoutine != null)
                 return;
-            
-            _shootingRoutine = _coroutineRunner.StartCoroutine(ShootingRoutine());
+
+            _shootingRoutine = StartCoroutine(ShootingRoutine());
         }
 
         public void Deactivate()
         {
             if (_shootingRoutine == null)
                 return;
-            
-            _coroutineRunner.StopCoroutine(_shootingRoutine);
+
+            StopCoroutine(_shootingRoutine);
             _shootingRoutine = null;
         }
-        
+
+        public void SetGunPoints(Transform[] points) => 
+            _gunPoints = points;
+
         private IEnumerator ShootingRoutine()
         {
             while (true)
@@ -53,11 +56,21 @@ namespace Code.Entities.Player
                     LazerBullet bullet = _bulletsPool.Get(bulletPosition, bulletRotation);
 
                     bullet.Rigidbody.velocity = bullet.transform.forward * bullet.Speed;
-                    OnShot?.Invoke();
+                    PlayAudio();
+                    OnFire?.Invoke();
                 }
 
                 yield return new WaitForSeconds(_reloadingTime);
             }
+        }
+
+        private void PlayAudio()
+        {
+            if (_audio == null)
+                return;
+            
+            _audio.Stop();
+            _audio.Play();
         }
     }
 }

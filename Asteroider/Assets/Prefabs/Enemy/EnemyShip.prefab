@@ -29,7 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863096324868649432}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4863096322997791393
 GameObject:
@@ -60,7 +60,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4863096324868649432}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4863096324868649436
 GameObject:
@@ -72,7 +72,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4863096324868649432}
   - component: {fileID: 4863096324868649435}
-  - component: {fileID: 1932383451075177087}
   - component: {fileID: 8225876717979134983}
   - component: {fileID: 62703446017414966}
   - component: {fileID: 747893482695555553}
@@ -104,6 +103,7 @@ Transform:
   m_Children:
   - {fileID: 3759801408570600523}
   - {fileID: 7446792984893001584}
+  - {fileID: 9189555830072584157}
   - {fileID: 4863096322997791392}
   - {fileID: 4863096322920202844}
   - {fileID: 4863096323779164746}
@@ -123,26 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rigidbody>k__BackingField: {fileID: 4863096324868649433}
-  _weapon: {fileID: 1932383451075177087}
---- !u!114 &1932383451075177087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4863096324868649436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf995a84e5b4549bb1a833ffc56b2b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 7716860013432558412, guid: cb1c98aabf3fd3b4daf4e64854973ca4,
-    type: 3}
-  _gun:
-    _gunPoints:
-    - {fileID: 4863096322997791392}
-    - {fileID: 4863096322920202844}
-    _reloadingTime: 1
+  _weapon: {fileID: 6028256049698085700}
 --- !u!114 &8225876717979134983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +259,57 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.47, y: 0.96, z: 6.9}
   m_Center: {x: 0, y: -0.15, z: -0.12}
+--- !u!1 &6332815605480963200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9189555830072584157}
+  - component: {fileID: 6028256049698085700}
+  m_Layer: 0
+  m_Name: BulletWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9189555830072584157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6332815605480963200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4863096324868649432}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6028256049698085700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6332815605480963200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e052ee4f77444d128887a59aca27752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 7716860013432558412, guid: cb1c98aabf3fd3b4daf4e64854973ca4,
+    type: 3}
+  _audio: {fileID: 0}
+  _gunPoints:
+  - {fileID: 4863096322997791392}
+  - {fileID: 4863096322920202844}
+  _reloadingTime: 1
 --- !u!1 &7787711595229697482
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 55700a754af55ac429f02417b245ae86, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 55700a754af55ac429f02417b245ae86, type: 3}
       propertyPath: m_LocalPosition.x

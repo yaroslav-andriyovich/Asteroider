@@ -1,3 +1,4 @@
+using Code.Entities.Player.Weapon;
 using Code.ObjectEmitting;
 using Code.Services.Pools;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Code.Entities.Enemy
     {
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
-        [SerializeField] private EnemyWeapon _weapon;
+        [SerializeField] private BulletWeapon _weapon;
 
         public void Emit() =>
             _weapon.Activate();

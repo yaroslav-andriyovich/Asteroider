@@ -169,21 +169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3fa7529b3a4c6aac93694e3db04977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _primaryBulletPrefab: {fileID: 7716860013432558412, guid: d0205b069433acc4f8f72f16eaac88f6,
-    type: 3}
-  _secondaryBulletPrefab: {fileID: 2961645184944776782, guid: 45158de6ac297fc4fae3520197555b47,
-    type: 3}
-  _primaryGun:
-    _gunPoints:
-    - {fileID: 6254538064606525693}
-    _reloadingTime: 0.4
-  _secondaryGun:
-    _gunPoints:
-    - {fileID: 6254538064807866612}
-    - {fileID: 6254538064999936621}
-    _reloadingTime: 0.2
-  _primaryGunSound: {fileID: 6254538064606525690}
-  _secondaryGunSound: {fileID: 6254538064807866613}
+  _primaryGunPoints:
+  - {fileID: 6254538064606525693}
+  _secondaryGunPoints:
+  - {fileID: 6254538064807866612}
+  - {fileID: 6254538064999936621}
 --- !u!114 &6254538063486876596
 MonoBehaviour:
   m_ObjectHideFlags: 0
