@@ -1,3 +1,4 @@
+using System;
 using Code.Entities.Player;
 using Code.Entities.Player.Weapon;
 using UnityEngine;
@@ -11,7 +12,9 @@ namespace Code.Services
         [SerializeField] private PlayerShip _playerShipPrefab;
         [SerializeField] private GameObject _primaryWeaponPrefab;
         [SerializeField] private GameObject _secondaryWeaponPrefab;
-        
+
+        public event Action<PlayerShip> OnSpawned;
+
         private IObjectResolver _objectResolver;
 
         [Inject]
@@ -24,6 +27,7 @@ namespace Code.Services
             PlayerWeapon weapon = ship.GetComponent<PlayerWeapon>();
             
             SetupWeapon(weapon, ship.transform);
+            OnSpawned?.Invoke(ship);
         }
 
         private void SetupWeapon(PlayerWeapon weapon, Transform parent)

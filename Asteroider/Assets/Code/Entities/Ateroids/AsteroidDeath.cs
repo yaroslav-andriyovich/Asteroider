@@ -1,6 +1,5 @@
 using System;
 using Code.Effects;
-using Code.Entities.Components;
 using Code.Entities.Components.Death;
 using Code.Services.Pools;
 using UnityEngine;
@@ -36,7 +35,7 @@ namespace Code.Entities.Ateroids
                 Die();
         }
 
-        private void Die()
+        public void Die()
         {
             _isDead = true;
             PlayEffect();

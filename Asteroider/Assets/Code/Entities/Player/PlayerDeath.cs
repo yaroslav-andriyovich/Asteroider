@@ -7,12 +7,10 @@ using Code.Utils;
 using UnityEngine;
 using VContainer;
 
-namespace Code.Entities.Enemy
+namespace Code.Entities.Player
 {
-    public class EnemyDeath : MonoBehaviour, IDeath
+    public class PlayerDeath : MonoBehaviour, IDeath
     {
-        [SerializeField] private EnemyTrigger _trigger;
-        
         public event Action OnHappened;
         
         private IHealth _health;
@@ -24,26 +22,16 @@ namespace Code.Entities.Enemy
             _health = GetComponent<IHealth>();
             
             _health.OnChanged += OnHealthChanged;
-            _trigger.OnTrigger += OnTrigger;
         }
 
-        private void OnEnable() => 
-            _isDead = false;
-        
-        private void OnTrigger(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (!_isDead 
-                && (other.CompareTag(GameTags.Player) 
-                || other.CompareTag(GameTags.Obstacle)
-                || other.CompareTag(GameTags.Enemy)))
+            if (other.CompareTag(GameTags.Obstacle))
                 Die();
         }
-
-        private void OnDestroy()
-        {
+        
+        private void OnDestroy() => 
             _health.OnChanged -= OnHealthChanged;
-            _trigger.OnTrigger -= OnTrigger;
-        }
 
         [Inject]
         public void Construct(PoolService poolService) => 
@@ -52,10 +40,10 @@ namespace Code.Entities.Enemy
         public void Die()
         {
             _isDead = true;
-            Vector3 position = transform.position;
-            ExplosionEffect effect = _explosionEffectsPool.Get(position, Quaternion.identity);
+            ExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
 
             effect.Play();
+            gameObject.SetActive(false);
             OnHappened?.Invoke();
         }
 

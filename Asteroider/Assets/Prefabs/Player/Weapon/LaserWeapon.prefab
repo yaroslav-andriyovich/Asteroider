@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 483490783052686424}
   - component: {fileID: 3231655920420234395}
   - component: {fileID: 3447043186479001424}
-  - component: {fileID: 1952911408735917803}
   - component: {fileID: 483490783052686431}
   m_Layer: 7
   m_Name: LaserWeapon
@@ -61,20 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e7ad343f2d43f195ba305fd3a26b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 100
---- !u!65 &1952911408735917803
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483490783052686425}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 40}
-  m_Center: {x: 0, y: 0, z: 20}
+  _line: {fileID: 483490784095963422}
+  _attackRange: 30
+  _attackWidth: 2
+  _damage: 2
 --- !u!82 &483490783052686431
 AudioSource:
   m_ObjectHideFlags: 0

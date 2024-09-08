@@ -11,7 +11,7 @@ namespace Code.Entities.Enemy
 
         [SerializeField] private BulletWeapon _weapon;
 
-        public void Emit() =>
+        public void Emit() => 
             _weapon.Activate();
     }
 }

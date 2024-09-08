@@ -1,4 +1,3 @@
-using Code.Extensions;
 using Code.ObjectEmitting;
 using Code.Services.Pools;
 using Code.Utils;
@@ -8,15 +7,6 @@ namespace Code
 {
     public class PlayableZone : MonoBehaviour
     {
-        private void Awake()
-        {
-            Vector3 stretchedSizeRelative = Camera.main.GetStretchedSizeRelative();
-
-            stretchedSizeRelative.y = transform.localScale.y;
-            
-            transform.localScale = stretchedSizeRelative;
-        }
-
         private void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent(out IPoolable poolable)

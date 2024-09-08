@@ -1,4 +1,3 @@
-using Code.Extensions;
 using Code.Services.Pools;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,11 +9,8 @@ namespace Code.ObjectEmitting
         private float _dividedLocalScaleX; 
         private PoolService _poolService;
 
-        private void Awake()
-        {
-            Resize();
+        private void Awake() => 
             _dividedLocalScaleX = transform.localScale.x / 2;
-        }
 
         public Vector3 GetRandomPosition()
         {
@@ -22,14 +18,6 @@ namespace Code.ObjectEmitting
 
             position.x += Random.Range(-_dividedLocalScaleX, _dividedLocalScaleX);
             return position;
-        }
-
-        private void Resize()
-        {
-            Vector3 scale = transform.localScale;
-            
-            scale.x = Camera.main.GetStretchedSizeRelative().x;
-            transform.localScale = scale;
         }
     }
 }

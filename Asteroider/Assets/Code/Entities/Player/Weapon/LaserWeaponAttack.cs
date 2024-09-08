@@ -1,41 +1,50 @@
-using Code.Effects;
 using Code.Entities.Components;
-using Code.Services.Pools;
+using Code.Entities.Components.Death;
 using Code.Utils;
 using UnityEngine;
-using VContainer;
 
 namespace Code.Entities.Player.Weapon
 {
     public class LaserWeaponAttack : MonoBehaviour
     {
+        [SerializeField] private LineRenderer _line;
+        [SerializeField, Min(0f)] private float _attackRange;
+        [SerializeField, Min(0f)] private float _attackWidth;
         [SerializeField] private float _damage;
 
-        private MonoPool<ExplosionEffect> _explosionEffectsPool;
-        
         private void Update()
         {
             transform.rotation = Quaternion.identity;
-        }
-
-        [Inject]
-        public void Construct(PoolService poolService) =>
-            _explosionEffectsPool = poolService.GetPool<ExplosionEffect>();
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag(GameTags.PlayableZone))
+            
+            if (!isActiveAndEnabled)
                 return;
 
-            if (!other.CompareTag(GameTags.Asteroid))
+            float hitDistance;
+            
+            if (Physics.Raycast(GetRay(), out RaycastHit hit, _attackRange) 
+            //if (Physics.BoxCast(transform.position, new Vector3(_attackWidth, 1f, _attackRange) / 2f, transform.forward, out RaycastHit hit, transform.rotation, _attackRange) 
+                && !hit.transform.CompareTag(GameTags.PlayableZone))
             {
-                if (other.TryGetComponent(out IDamageable damageable))
+                if (hit.transform.TryGetComponent(out IDamageable damageable))
                     damageable.TakeDamage(_damage);
-                
-                ExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
+                else if (hit.transform.TryGetComponent(out IDeath death))
+                    death.Die();
 
-                effect.Play();
+                hitDistance = hit.distance;
             }
+            else
+                hitDistance = _attackRange;
+
+            SetLineSecondPoint(hitDistance);
         }
+
+        private Ray GetRay()
+        {
+            Ray ray = new Ray(transform.position, transform.forward * _attackRange);
+            return ray;
+        }
+
+        private void SetLineSecondPoint(float hitDistance) => 
+            _line.SetPosition(1, Vector3.forward * hitDistance);
     }
 }

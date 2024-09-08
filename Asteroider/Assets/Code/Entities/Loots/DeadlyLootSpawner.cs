@@ -1,4 +1,3 @@
-using Code.Entities.Components;
 using Code.Entities.Components.Death;
 using UnityEngine;
 

@@ -15,13 +15,13 @@ namespace Code.Services.Pools
             _returnToPool((T)this);
 
         protected void Release(float delay) => 
-            DOVirtual.DelayedCall(delay, Release);
+            DOVirtual.DelayedCall(delay, Release, ignoreTimeScale: false);
         
         protected void Release(float delay, Action delayedAction) => 
             DOVirtual.DelayedCall(delay, () =>
             {
                 delayedAction?.Invoke();
                 Release();
-            });
+            }, ignoreTimeScale: false);
     }
 }

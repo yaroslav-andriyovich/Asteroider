@@ -10,6 +10,9 @@ namespace Code.Entities.Player.Weapon
         public event Action OnFire;
         public bool IsActive => gameObject.activeSelf;
 
+        private void Awake() => 
+            Deactivate();
+
         public void Activate()
         {
             gameObject.SetActive(true);

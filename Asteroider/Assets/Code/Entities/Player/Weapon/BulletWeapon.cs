@@ -21,6 +21,9 @@ namespace Code.Entities.Player.Weapon
         private MonoPool<LazerBullet> _bulletsPool;
         private Coroutine _shootingRoutine;
 
+        private void OnDisable() => 
+            Deactivate();
+
         [Inject]
         public void Construct(PoolService poolService) => 
             _bulletsPool = poolService.GetPool(_bulletPrefab);

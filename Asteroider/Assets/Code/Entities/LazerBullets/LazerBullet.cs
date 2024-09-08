@@ -1,5 +1,7 @@
+using System;
 using Code.Effects;
 using Code.Entities.Components;
+using Code.Entities.Components.Death;
 using Code.Services.Pools;
 using Code.Utils;
 using UnityEngine;
@@ -7,13 +9,14 @@ using VContainer;
 
 namespace Code.Entities.LazerBullets
 {
-    public class LazerBullet : PoolableBase<LazerBullet>
+    public class LazerBullet : PoolableBase<LazerBullet>, IDeath
     {
         [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }
 
         [SerializeField] private float _damage;
 
+        public event Action OnHappened;
         private MonoPool<ExplosionEffect> _explosionEffectsPool;
 
         [Inject]
@@ -35,6 +38,14 @@ namespace Code.Entities.LazerBullets
                 effect.Play();
             }
             
+            Release();
+        }
+
+        public void Die()
+        {
+            ExplosionEffect effect = _explosionEffectsPool.Get(transform.position, Quaternion.identity);
+
+            effect.Play();
             Release();
         }
     }
