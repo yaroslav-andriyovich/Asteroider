@@ -1,4 +1,5 @@
 using Code.Effects;
+using Code.Entities.Components;
 using Code.ObjectEmitting;
 using Code.Services;
 using Code.Services.Pools;
@@ -11,13 +12,13 @@ namespace Code.Infrastructure
     public class MainSceneScope : LifetimeScope
     {
         [SerializeField] private MainScenePoolInitializer _scenePoolInitializer;
-        [SerializeField] private PlayableZone _playableZone;
+        [SerializeField] private ScreenBoundaryLimitService _screenBoundaryLimitService;
         [SerializeField] private ExplosionAudio _explosionAudio;
         [SerializeField] private PlayerSpawner _playerSpawner;
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_playableZone);
+            builder.RegisterComponent(_screenBoundaryLimitService);
             builder.Register<PoolService>(Lifetime.Singleton);
             builder.RegisterComponent(_explosionAudio);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();

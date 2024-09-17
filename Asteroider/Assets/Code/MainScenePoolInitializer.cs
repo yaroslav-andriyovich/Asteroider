@@ -1,6 +1,5 @@
 using System;
 using Code.Effects;
-using Code.Entities.Ateroids;
 using Code.Entities.Ateroids.Poolable;
 using Code.Entities.Enemy;
 using Code.Entities.LazerBullets;
@@ -36,7 +35,20 @@ namespace Code
         public void Initialize(IObjectResolver resolver)
         {
             PoolService poolService = resolver.Resolve<PoolService>();
-                
+
+            CreatePoolData[] createPoolDatas = new[]
+            {
+                new CreatePoolData(typeof(ExplosionEffect), _prefabExplosionEffect, 24),
+                new CreatePoolData(typeof(PoolableAsteroid), _asteroid1Prefab, 8),
+                new CreatePoolData(typeof(PoolableAsteroid), _asteroid2Prefab, 8),
+                new CreatePoolData(typeof(PoolableAsteroid), _asteroid3Prefab, 8),
+                new CreatePoolData(typeof(LazerBullet), _playerPrimaryBullet, 4),
+                new CreatePoolData(typeof(LazerBullet), _playerSecondaryBullet, 8),
+                new CreatePoolData(typeof(LazerBullet), _enemyBullet, 8),
+                new CreatePoolData(typeof(EnemyShip), _enemyShip, 2),
+                new CreatePoolData(typeof(Obstacle), _bigAsteroidObstaclePrefab, 1),
+            };
+            
             IPoolableFactory<ExplosionEffect> explosionEffectFactory = new PoolableFactory<ExplosionEffect>(resolver, _prefabExplosionEffect);
             IPoolableFactory<PoolableAsteroid> asteroid1Factory = new PoolableFactory<PoolableAsteroid>(resolver, _asteroid1Prefab);
             IPoolableFactory<PoolableAsteroid> asteroid2Factory = new PoolableFactory<PoolableAsteroid>(resolver, _asteroid2Prefab);
@@ -61,6 +73,20 @@ namespace Code
             poolService.CreatePool(enemyShipFactory, 2);
                 
             poolService.CreatePool(bigAsteroidObstacleFactory, 1);
+        }
+
+        private class CreatePoolData
+        {
+            public readonly Type type;
+            public readonly object prefab;
+            public readonly int poolSize;
+
+            public CreatePoolData(Type type, object prefab, int poolSize)
+            {
+                this.type = type;
+                this.prefab = prefab;
+                this.poolSize = poolSize;
+            }
         }
     }
 }

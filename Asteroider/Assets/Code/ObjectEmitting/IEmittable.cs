@@ -4,7 +4,7 @@ namespace Code.ObjectEmitting
 {
     public interface IEmittable
     {
-        Rigidbody Rigidbody { get; }
+        Rigidbody2D Rigidbody { get; }
         void Emit();
     }
 }

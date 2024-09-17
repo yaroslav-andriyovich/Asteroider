@@ -6,9 +6,9 @@ namespace Code.Entities.Enemy
 {
     public class EnemyTrigger : MonoBehaviour
     {
-        public event Action<Collider> OnTrigger;
+        public event Action<Collider2D> OnTrigger;
         
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(GameTags.PlayableZone) || other.CompareTag(GameTags.Asteroid))
                 return;

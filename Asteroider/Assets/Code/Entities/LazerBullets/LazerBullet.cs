@@ -11,7 +11,7 @@ namespace Code.Entities.LazerBullets
 {
     public class LazerBullet : PoolableBase<LazerBullet>, IDeath
     {
-        [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
+        [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }
 
         [SerializeField] private float _damage;
@@ -23,7 +23,7 @@ namespace Code.Entities.LazerBullets
         public void Construct(PoolService poolService) =>
             _explosionEffectsPool = poolService.GetPool<ExplosionEffect>();
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(GameTags.PlayableZone))
                 return;

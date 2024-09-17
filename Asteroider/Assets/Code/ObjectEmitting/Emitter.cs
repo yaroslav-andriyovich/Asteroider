@@ -1,4 +1,5 @@
 using System.Collections;
+using Code.Entities.Components;
 using Code.Utils;
 using UnityEngine;
 using VContainer;
@@ -39,7 +40,7 @@ namespace Code.ObjectEmitting
 
                 SetPosition(spawnedObject);
                 ApplyVelocity(emittable);
-                ApplyAngularVelocity(emittable);
+                ApplyAngularVelocity(spawnedObject.GetComponent<MeshRotator>());
                 
                 emittable.Emit();
             }
@@ -58,11 +59,14 @@ namespace Code.ObjectEmitting
         {
             float deviationAngle = Random.Range(_deviationAngle.min, _deviationAngle.max);
             float speed = -Random.Range(_speed.min, _speed.max);
-            
-            component.Rigidbody.velocity = new Vector3(deviationAngle, 0, speed);
+
+            component.Rigidbody.velocity = new Vector2(deviationAngle, speed);
         }
 
-        private void ApplyAngularVelocity(IEmittable component) => 
-            component.Rigidbody.angularVelocity = Random.insideUnitSphere * Random.Range(_rotationSpeed.min, _rotationSpeed.max);
+        private void ApplyAngularVelocity(MeshRotator rotator)
+        {
+            if (rotator != null)
+                rotator.UpdateAngularVelocity(Random.Range(_rotationSpeed.min, _rotationSpeed.max));
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace Code.Services
         [SerializeField] private PlayerShip _playerShipPrefab;
         [SerializeField] private GameObject _primaryWeaponPrefab;
         [SerializeField] private GameObject _secondaryWeaponPrefab;
+        [SerializeField] private Vector2 _spawnPosition;
+        [SerializeField] private Vector3 _spawnRotation;
 
         public event Action<PlayerShip> OnSpawned;
 
@@ -23,7 +25,7 @@ namespace Code.Services
 
         private void Start()
         {
-            PlayerShip ship = _objectResolver.Instantiate(_playerShipPrefab);
+            PlayerShip ship = _objectResolver.Instantiate(_playerShipPrefab, _spawnPosition, Quaternion.Euler(_spawnRotation));
             PlayerWeapon weapon = ship.GetComponent<PlayerWeapon>();
             
             SetupWeapon(weapon, ship.transform);

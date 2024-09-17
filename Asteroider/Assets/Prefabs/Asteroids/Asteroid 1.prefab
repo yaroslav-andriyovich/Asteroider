@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 8053076473263187901}
   - component: {fileID: -4354842689530383881}
   - component: {fileID: -4485596438510846827}
-  - component: {fileID: 4251164174854741023}
-  - component: {fileID: 4151262185539200328}
+  - component: {fileID: -1346772105891132695}
+  - component: {fileID: 4597846768444005174}
+  - component: {fileID: 5187422447516838256}
+  - component: {fileID: 3536074149737741821}
   m_Layer: 8
   m_Name: Asteroid 1
   m_TagString: Asteroid
@@ -51,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f56b6d73cf46568cae1f83b3794bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Rigidbody>k__BackingField: {fileID: 4251164174854741023}
+  <Rigidbody>k__BackingField: {fileID: 5187422447516838256}
 --- !u!114 &5500326495639960490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,35 +105,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978b1805cb944245a691a0c44554ba33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &4251164174854741023
-Rigidbody:
+--- !u!114 &-1346772105891132695
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4251164174857805737}
-  serializedVersion: 2
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2188c2ff5fbf413e8577e25310b82105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mesh: {fileID: 4251164174857574977}
+--- !u!114 &4597846768444005174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251164174857805737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f403921893f94105a854a3abd5d6c6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 5187422447516838256}
+  <Operation>k__BackingField: 3
+--- !u!50 &5187422447516838256
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251164174857805737}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_Constraints: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!65 &4151262185539200328
-BoxCollider:
+  m_Constraints: 0
+--- !u!70 &3536074149737741821
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4251164174857805737}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.4, z: 1.4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.7, y: 0.3}
+  m_Direction: 0
 --- !u!1 &4251164174858036467
 GameObject:
   m_ObjectHideFlags: 0

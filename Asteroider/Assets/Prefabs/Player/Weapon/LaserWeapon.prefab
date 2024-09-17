@@ -64,6 +64,9 @@ MonoBehaviour:
   _attackRange: 30
   _attackWidth: 2
   _damage: 2
+  _castMask:
+    serializedVersion: 2
+    m_Bits: 3840
 --- !u!82 &483490783052686431
 AudioSource:
   m_ObjectHideFlags: 0
@@ -235,7 +238,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 40}
+  - {x: 0, y: 40, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 10

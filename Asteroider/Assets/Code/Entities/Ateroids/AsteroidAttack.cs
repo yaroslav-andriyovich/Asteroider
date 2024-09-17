@@ -9,15 +9,18 @@ namespace Code.Entities.Ateroids
         [SerializeField] private float _damage;
 
         private void Awake() => 
-            _trigger.OnTriggered += ApplyDamage;
+            _trigger.OnTriggered += OnTrigger;
 
         private void OnDestroy() => 
-            _trigger.OnTriggered -= ApplyDamage;
+            _trigger.OnTriggered -= OnTrigger;
 
-        private void ApplyDamage(Collider other)
+        private void OnTrigger(Collider2D other)
         {
             if (other.TryGetComponent(out IDamageable damageable))
-                damageable.TakeDamage(_damage);
+                ApplyDamage(damageable);
         }
+        
+        private void ApplyDamage(IDamageable damageable) => 
+            damageable.TakeDamage(_damage);
     }
 }

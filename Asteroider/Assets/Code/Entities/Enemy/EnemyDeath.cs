@@ -30,7 +30,7 @@ namespace Code.Entities.Enemy
         private void OnEnable() => 
             _isDead = false;
         
-        private void OnTrigger(Collider other)
+        private void OnTrigger(Collider2D other)
         {
             if (!_isDead 
                 && (other.CompareTag(GameTags.Player) 

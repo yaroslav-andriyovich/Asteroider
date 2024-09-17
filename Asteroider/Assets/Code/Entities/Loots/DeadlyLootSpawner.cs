@@ -1,5 +1,7 @@
 using Code.Entities.Components.Death;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace Code.Entities.Loots
 {
@@ -10,6 +12,7 @@ namespace Code.Entities.Loots
         [SerializeField] private bool _transferVelocity = true;
 
         private IDeath _death;
+        private IObjectResolver _objectResolver;
 
         private void Awake()
         {
@@ -20,14 +23,18 @@ namespace Code.Entities.Loots
         private void OnDestroy() => 
             _death.OnHappened -= OnDeathHappened;
 
+        [Inject]
+        public void Construct(IObjectResolver objectResolver) => 
+            _objectResolver = objectResolver;
+
         private void OnDeathHappened()
         {
             if (!CanSpawn())
                 return;
             
-            Loot loot = Instantiate(_lootPrefab, transform.position, Quaternion.identity);
+            Loot loot = _objectResolver.Instantiate(_lootPrefab, transform.position, Quaternion.identity);
             
-            if (_transferVelocity && TryGetComponent(out Rigidbody rb))
+            if (_transferVelocity && TryGetComponent(out Rigidbody2D rb))
                 loot.Rigidbody.velocity = rb.velocity;
         }
 

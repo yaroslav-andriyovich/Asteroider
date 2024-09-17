@@ -1,27 +1,27 @@
-using Code.Infrastructure;
 using Code.Services.Input;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
 
 namespace Code.Entities.Player.Weapon
 {
-    public class PlayerWeapon : MonoBehaviour, ICoroutineRunner
+    public class PlayerWeapon : MonoBehaviour
     {
         [SerializeField] private Transform[] _primaryGunPoints;
         [SerializeField] private Transform[] _secondaryGunPoints;
-        
-        private IWeapon _defaultPrimaryWeapon;
-        private IWeapon _primaryWeapon;
+
+        private IWeapon _defaultWeapon;
         private IWeapon _secondaryWeapon;
-        
-        private InputAction _inputPrimaryGun;
+        private IWeapon _currentWeapon;
+
         private InputAction _inputSecondaryGun;
+
+        private void Start() => 
+            _currentWeapon.Activate();
 
         private void OnDestroy()
         {
-            _inputPrimaryGun.started -= OnPrimaryWeaponActivated;
-            _inputPrimaryGun.canceled -= OnPrimaryWeaponDeactivated;
             _inputSecondaryGun.started -= OnSecondaryWeaponActivated;
             _inputSecondaryGun.canceled -= OnSecondaryWeaponDeactivated;
         }
@@ -31,7 +31,6 @@ namespace Code.Entities.Player.Weapon
         {
             InputActions.PlayerActions playerActions = inputService.GetPlayerInput();
 
-            _inputPrimaryGun = playerActions.ShipPrimaryShoot;
             _inputSecondaryGun = playerActions.ShipSecondaryShoot;
 
             InitializeInput();
@@ -39,32 +38,45 @@ namespace Code.Entities.Player.Weapon
         
         public void Setup(IWeapon primaryWeapon, IWeapon secondaryWeapon)
         {
-            _defaultPrimaryWeapon = primaryWeapon;
-            _primaryWeapon = primaryWeapon;
+            _defaultWeapon = primaryWeapon;
             _secondaryWeapon = secondaryWeapon;
-            
-            _primaryWeapon.SetGunPoints(_primaryGunPoints);
+            _currentWeapon = primaryWeapon;
+
+            _defaultWeapon.SetGunPoints(_primaryGunPoints);
             _secondaryWeapon.SetGunPoints(_secondaryGunPoints);
         }
 
-        public void ChangeWeapon(IWeapon weapon)
+        public void ChangeWeapon(IWeapon special)
         {
+            _currentWeapon.Deactivate();
+
+            Transform weaponTransform = special.gameObject.transform;
+
+            weaponTransform.parent = transform;
+            weaponTransform.localPosition = Vector3.zero;
+
+            special.SetGunPoints(_primaryGunPoints);
+
+            _currentWeapon = special;
+            _currentWeapon.Activate();
+
+            DOVirtual.DelayedCall(5f, () =>
+            {
+                _currentWeapon.Deactivate();
+
+                if (_currentWeapon != _defaultWeapon)
+                    Destroy(_currentWeapon.gameObject);
+
+                _currentWeapon = _defaultWeapon;
+                _currentWeapon.Activate();
+            });
         }
 
         private void InitializeInput()
         {
-            _inputPrimaryGun.started += OnPrimaryWeaponActivated;
-            _inputPrimaryGun.canceled += OnPrimaryWeaponDeactivated;
-            
             _inputSecondaryGun.started += OnSecondaryWeaponActivated;
             _inputSecondaryGun.canceled += OnSecondaryWeaponDeactivated;
         }
-
-        private void OnPrimaryWeaponActivated(InputAction.CallbackContext ctx) => 
-            _primaryWeapon.Activate();
-
-        private void OnPrimaryWeaponDeactivated(InputAction.CallbackContext ctx) => 
-            _primaryWeapon.Deactivate();
 
         private void OnSecondaryWeaponActivated(InputAction.CallbackContext ctx) => 
             _secondaryWeapon.Activate();

@@ -29,7 +29,7 @@ namespace Code.Entities.Ateroids
         public void Construct(PoolService poolService) => 
             _explosionEffectsPool = poolService.GetPool<ExplosionEffect>();
 
-        private void OnTriggered(Collider other)
+        private void OnTriggered(Collider2D other)
         {
             if (!_isDead)
                 Die();

@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 8859537427081500695}
   - component: {fileID: -8974418873440292284}
   - component: {fileID: -8134713029238526104}
-  - component: {fileID: 4240415372447025414}
-  - component: {fileID: 5601069377737291651}
+  - component: {fileID: 3024462609360520170}
+  - component: {fileID: -98807058198557202}
+  - component: {fileID: 9099978269087858304}
+  - component: {fileID: 464261506773411975}
   m_Layer: 8
   m_Name: Asteroid 3
   m_TagString: Asteroid
@@ -51,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f56b6d73cf46568cae1f83b3794bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Rigidbody>k__BackingField: {fileID: 4240415372447025414}
+  <Rigidbody>k__BackingField: {fileID: 9099978269087858304}
 --- !u!114 &-6940930818102837881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,35 +105,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978b1805cb944245a691a0c44554ba33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &4240415372447025414
-Rigidbody:
+--- !u!114 &3024462609360520170
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4240415372443689878}
-  serializedVersion: 2
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2188c2ff5fbf413e8577e25310b82105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mesh: {fileID: 4240415372443571310}
+--- !u!114 &-98807058198557202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240415372443689878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f403921893f94105a854a3abd5d6c6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 9099978269087858304}
+  <Operation>k__BackingField: 3
+--- !u!50 &9099978269087858304
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240415372443689878}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_Constraints: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!135 &5601069377737291651
-SphereCollider:
+  m_Constraints: 0
+--- !u!70 &464261506773411975
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4240415372443689878}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.6
-  m_Center: {x: -0.1, y: 0, z: 0.05}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15, y: 0}
+  m_Size: {x: 3, y: 3.25}
+  m_Direction: 0
 --- !u!1 &4240415372443901374
 GameObject:
   m_ObjectHideFlags: 0

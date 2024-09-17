@@ -7,7 +7,7 @@ namespace Code.Entities.Enemy
 {
     public class EnemyShip : PoolableBase<EnemyShip>, IEmittable
     {
-        [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
+        [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
 
         [SerializeField] private BulletWeapon _weapon;
 

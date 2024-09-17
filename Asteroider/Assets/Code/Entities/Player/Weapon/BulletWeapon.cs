@@ -54,11 +54,11 @@ namespace Code.Entities.Player.Weapon
             {
                 foreach (Transform point in _gunPoints)
                 {
-                    Vector3 bulletPosition = new Vector3(point.position.x, 0f, point.position.z);
-                    Quaternion bulletRotation = Quaternion.Euler(0f, point.eulerAngles.y, 0f);
+                    Vector2 bulletPosition = new Vector2(point.position.x, point.position.y);
+                    Quaternion bulletRotation = Quaternion.Euler(0f, 0f, point.eulerAngles.z);
                     LazerBullet bullet = _bulletsPool.Get(bulletPosition, bulletRotation);
 
-                    bullet.Rigidbody.velocity = bullet.transform.forward * bullet.Speed;
+                    bullet.Rigidbody.velocity = bullet.transform.up * bullet.Speed;
                     PlayAudio();
                     OnFire?.Invoke();
                 }

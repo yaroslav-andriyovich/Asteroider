@@ -6,7 +6,7 @@ namespace Code.Entities.Ateroids.Poolable
 {
     public class PoolableAsteroid : PoolableBase<PoolableAsteroid>, IEmittable
     {
-        [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
+        [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
 
         public void Emit()
         {

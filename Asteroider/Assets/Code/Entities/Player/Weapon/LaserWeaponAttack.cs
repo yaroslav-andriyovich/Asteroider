@@ -2,6 +2,7 @@ using Code.Entities.Components;
 using Code.Entities.Components.Death;
 using Code.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Entities.Player.Weapon
 {
@@ -11,6 +12,7 @@ namespace Code.Entities.Player.Weapon
         [SerializeField, Min(0f)] private float _attackRange;
         [SerializeField, Min(0f)] private float _attackWidth;
         [SerializeField] private float _damage;
+        [SerializeField] private LayerMask _castMask;
 
         private void Update()
         {
@@ -20,10 +22,10 @@ namespace Code.Entities.Player.Weapon
                 return;
 
             float hitDistance;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, _attackRange, _castMask);
             
-            if (Physics.Raycast(GetRay(), out RaycastHit hit, _attackRange) 
-            //if (Physics.BoxCast(transform.position, new Vector3(_attackWidth, 1f, _attackRange) / 2f, transform.forward, out RaycastHit hit, transform.rotation, _attackRange) 
-                && !hit.transform.CompareTag(GameTags.PlayableZone))
+            if (hit && !hit.transform.CompareTag(GameTags.PlayableZone))
             {
                 if (hit.transform.TryGetComponent(out IDamageable damageable))
                     damageable.TakeDamage(_damage);
@@ -38,13 +40,7 @@ namespace Code.Entities.Player.Weapon
             SetLineSecondPoint(hitDistance);
         }
 
-        private Ray GetRay()
-        {
-            Ray ray = new Ray(transform.position, transform.forward * _attackRange);
-            return ray;
-        }
-
         private void SetLineSecondPoint(float hitDistance) => 
-            _line.SetPosition(1, Vector3.forward * hitDistance);
+            _line.SetPosition(1, Vector3.up * hitDistance);
     }
 }

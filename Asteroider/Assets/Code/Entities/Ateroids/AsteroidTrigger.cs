@@ -6,9 +6,9 @@ namespace Code.Entities.Ateroids
 {
     public class AsteroidTrigger : MonoBehaviour
     {
-        public event Action<Collider> OnTriggered;
+        public event Action<Collider2D> OnTriggered;
         
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(GameTags.PlayableZone) || other.CompareTag(GameTags.Asteroid))
                 return;
