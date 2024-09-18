@@ -1,4 +1,6 @@
-using Code.Entities.Components;
+using Code.Entities.Damageables;
+using Code.Entities.HealthPoints;
+using Code.Entities.Shields;
 using UnityEngine;
 
 namespace Code.Entities.Player

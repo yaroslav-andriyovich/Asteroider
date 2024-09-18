@@ -1,4 +1,4 @@
-using Code.Entities.Components;
+using Code.Entities.Damageables;
 using UnityEngine;
 
 namespace Code.Entities.Ateroids

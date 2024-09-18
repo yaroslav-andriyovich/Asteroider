@@ -1,4 +1,5 @@
-using Code.Entities.Components;
+using Code.Entities.HealthPoints;
+using Code.Entities.Loots.Base;
 using UnityEngine;
 
 namespace Code.Entities.Loots

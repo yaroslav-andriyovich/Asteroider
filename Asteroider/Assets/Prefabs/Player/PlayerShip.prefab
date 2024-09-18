@@ -384,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Rigidbody>k__BackingField: {fileID: 591442256243052438}
   <Operation>k__BackingField: 2
+  <IsSpawnedOutside>k__BackingField: 0
 --- !u!1 &6254538064606525692
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-using Code.Entities.Components;
+using Code.Entities.Loots.Base;
+using Code.Entities.Shields;
 using UnityEngine;
 
 namespace Code.Entities.Loots

@@ -1,5 +1,5 @@
 using System;
-using Code.Entities.Components;
+using Code.Entities.HealthPoints;
 using UnityEngine;
 
 namespace Code.Entities.Player

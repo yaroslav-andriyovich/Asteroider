@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Rigidbody>k__BackingField: {fileID: 8634602766442840340}
   <Operation>k__BackingField: 3
+  <IsSpawnedOutside>k__BackingField: 1
 --- !u!50 &8634602766442840340
 Rigidbody2D:
   serializedVersion: 4

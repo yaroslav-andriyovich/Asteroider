@@ -1,4 +1,6 @@
-using Code.Entities.Player.Weapon;
+using Code.Entities.Loots.Base;
+using Code.Entities.Player;
+using Code.Entities.Weapons.Base;
 using UnityEngine;
 
 namespace Code.Entities.Loots

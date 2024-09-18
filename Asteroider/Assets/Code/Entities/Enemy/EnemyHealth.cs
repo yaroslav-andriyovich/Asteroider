@@ -1,5 +1,6 @@
 using System;
-using Code.Entities.Components;
+using Code.Entities.Damageables;
+using Code.Entities.HealthPoints;
 using UnityEngine;
 
 namespace Code.Entities.Enemy

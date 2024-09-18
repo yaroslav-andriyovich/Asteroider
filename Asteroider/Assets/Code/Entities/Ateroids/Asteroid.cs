@@ -1,4 +1,5 @@
-using Code.ObjectEmitting;
+using Code.Scene.ObjectEmitting;
+using Code.Scene.ObjectEmitting.Base;
 using UnityEngine;
 
 namespace Code.Entities.Ateroids

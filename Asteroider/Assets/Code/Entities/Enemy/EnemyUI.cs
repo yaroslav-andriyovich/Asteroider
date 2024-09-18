@@ -1,5 +1,5 @@
-using Code.Entities.Components;
-using Code.UI;
+using Code.Entities.HealthPoints;
+using Code.Entities.UI;
 using UnityEngine;
 
 namespace Code.Entities.Enemy

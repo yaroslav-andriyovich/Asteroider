@@ -1,5 +1,7 @@
-using Code.Entities.Player.Weapon;
-using Code.ObjectEmitting;
+using Code.Entities.Weapons.WithBullets;
+using Code.Infrastructure.Pools.Poolable;
+using Code.Scene.ObjectEmitting;
+using Code.Scene.ObjectEmitting.Base;
 using Code.Services.Pools;
 using UnityEngine;
 

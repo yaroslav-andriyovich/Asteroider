@@ -1,6 +1,7 @@
 using System;
 using Code.Effects;
-using Code.Entities.Components.Death;
+using Code.Entities.Death;
+using Code.Infrastructure.Pools;
 using Code.Services.Pools;
 using UnityEngine;
 using VContainer;
