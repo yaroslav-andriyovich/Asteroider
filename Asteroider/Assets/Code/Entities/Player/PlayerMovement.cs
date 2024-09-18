@@ -13,23 +13,26 @@ namespace Code.Entities.Player
 
         private const float SmoothTime = 0.16f;
 
-        private InputAction _shipInput;
-        private Vector2 _direction;
-        private Vector2 _smoothedDirection;
-        private Vector2 _smoothedVelocity;
-
-        private void Update() => 
-            Rotate();
+        private InputActions.PlayerActions _playerInput;
+        private Vector3 _inputMoveDirection;
+        private Vector3 _smoothedMoveDirection;
+        private Vector3 _currentSmoothedVelocity;
+        private Vector3 _inputRotateDirection;
+        private bool _isRotationLocked = true;
 
         private void FixedUpdate()
         {
             SmoothInput();
             Move();
-            //_motionLimiter.FixedTick();
+            Rotate();
         }
 
-        private void OnDestroy() => 
-            _shipInput.performed -= OnMove;
+        private void OnDestroy()
+        {
+            _playerInput.ShipMove.performed -= OnMove;
+            _playerInput.ShipRotate.performed -= OnRotate;
+            _playerInput.ShpRotationLock.performed -= OnToggleRotationLock;
+        }
 
         [Inject]
         public void Construct(InputService inputService)
@@ -37,26 +40,58 @@ namespace Code.Entities.Player
 #if UNITY_EDITOR
             _speed /= 2f;
 #endif
-            _shipInput = inputService.GetPlayerInput().ShipMove;
-            _shipInput.performed += OnMove;
+            _playerInput = inputService.GetPlayerInput();
+            
+            _playerInput.ShipMove.performed += OnMove;
+            _playerInput.ShipRotate.performed += OnRotate;
+            _playerInput.ShpRotationLock.performed += OnToggleRotationLock;
         }
 
         private void OnMove(InputAction.CallbackContext ctx) => 
-            _direction = ctx.ReadValue<Vector3>();
+            _inputMoveDirection = ctx.ReadValue<Vector3>();
         
+        private void OnRotate(InputAction.CallbackContext ctx) => 
+            _inputRotateDirection = ctx.ReadValue<Vector3>();
+        
+        private void OnToggleRotationLock(InputAction.CallbackContext ctx) => 
+            _isRotationLocked = !_isRotationLocked;
+
         private void SmoothInput() => 
-            _smoothedDirection = Vector2.SmoothDamp(_smoothedDirection, _direction, ref _smoothedVelocity, SmoothTime);
+            _smoothedMoveDirection = Vector3.SmoothDamp(_smoothedMoveDirection, _inputMoveDirection, ref _currentSmoothedVelocity, SmoothTime);
 
         private void Move()
         {
 #if UNITY_EDITOR
-            _rigidbody.velocity = new Vector2(_smoothedDirection.x, _smoothedDirection.y) * _speed;
+            _rigidbody.velocity = new Vector2(_smoothedMoveDirection.x, _smoothedMoveDirection.y) * _speed;
 #else 
-            _rigidbody.velocity = new Vector2(_direction.x, _direction.y) * _speed;
+            _rigidbody.velocity = new Vector2(_inputMoveDirection.x, _inputMoveDirection.y) * _speed;
 #endif
         }
 
-        private void Rotate() => 
-            _shipMesh.rotation = Quaternion.Euler(_rigidbody.velocity.y - 90f, 0f, -_rigidbody.velocity.x);
+        private void Rotate()
+        {
+            if (_isRotationLocked)
+                StabilizeShipRotation();
+            else
+                RotateShipObject();
+
+            RotateShipMesh();
+        }
+
+        private void StabilizeShipRotation() => 
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 1f);
+
+        private void RotateShipObject() => 
+            transform.Rotate(new Vector3(0f, 0f, _inputRotateDirection.z));
+
+        private void RotateShipMesh()
+        {
+            Vector3 localEulerRotation = new Vector3(_rigidbody.velocity.y, 0f, -_rigidbody.velocity.x);
+            const float correction = 90f;
+
+            localEulerRotation.x -= correction;
+            
+            _shipMesh.localRotation = Quaternion.Euler(localEulerRotation);
+        }
     }
 }

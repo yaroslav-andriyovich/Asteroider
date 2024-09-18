@@ -37,6 +37,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ShipRotate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7052a904-5359-4ee1-b21c-0cf4f503c484"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""ShipPrimaryShoot"",
                     ""type"": ""Button"",
                     ""id"": ""62f84ffc-ffca-45f4-ac59-b9a2f909c1d5"",
@@ -53,9 +62,29 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(pressPoint=1.401298E-45,behavior=2)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShpRotationLock"",
+                    ""type"": ""Button"",
+                    ""id"": ""1dd43d7e-0f27-44bf-9fe9-e540ad925b17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dec53caa-d81e-4480-958e-33c6133b6b0d"",
+                    ""path"": ""<Accelerometer>/acceleration"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
                 {
                     ""name"": ""Keyboard"",
                     ""id"": ""6dc01575-5a85-45bd-ad34-eadc4f7ba152"",
@@ -113,17 +142,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dec53caa-d81e-4480-958e-33c6133b6b0d"",
-                    ""path"": ""<Accelerometer>/acceleration"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShipMove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""2a774fe0-a686-4078-80fa-e2f454a162c3"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -143,6 +161,105 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ShipSecondaryShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""581f47fb-9c62-4553-ac6c-2e9e3456184a"",
+                    ""path"": ""<Gyroscope>/angularVelocity"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""484d4fb5-d5af-4195-a528-f8e4f9a78e5a"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""cfb0d271-76ab-4736-b7b7-1f69c54570fd"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""68ff20be-0bce-492c-8b34-f4d9cc7236d0"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a6d10669-426e-4cbd-b05d-0208e1f10a8b"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1907aa8a-4dea-422a-88cd-bca6aa2c8d60"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""11c1c14d-de70-41f1-be61-ab456949676b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""0a6852c7-4c20-4528-987c-5f1806700e42"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88c484b7-4e3b-4427-81bb-ab338f17f172"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShpRotationLock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -152,8 +269,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ShipMove = m_Player.FindAction("ShipMove", throwIfNotFound: true);
+        m_Player_ShipRotate = m_Player.FindAction("ShipRotate", throwIfNotFound: true);
         m_Player_ShipPrimaryShoot = m_Player.FindAction("ShipPrimaryShoot", throwIfNotFound: true);
         m_Player_ShipSecondaryShoot = m_Player.FindAction("ShipSecondaryShoot", throwIfNotFound: true);
+        m_Player_ShpRotationLock = m_Player.FindAction("ShpRotationLock", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -216,15 +335,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_ShipMove;
+    private readonly InputAction m_Player_ShipRotate;
     private readonly InputAction m_Player_ShipPrimaryShoot;
     private readonly InputAction m_Player_ShipSecondaryShoot;
+    private readonly InputAction m_Player_ShpRotationLock;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ShipMove => m_Wrapper.m_Player_ShipMove;
+        public InputAction @ShipRotate => m_Wrapper.m_Player_ShipRotate;
         public InputAction @ShipPrimaryShoot => m_Wrapper.m_Player_ShipPrimaryShoot;
         public InputAction @ShipSecondaryShoot => m_Wrapper.m_Player_ShipSecondaryShoot;
+        public InputAction @ShpRotationLock => m_Wrapper.m_Player_ShpRotationLock;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,12 +360,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ShipMove.started += instance.OnShipMove;
             @ShipMove.performed += instance.OnShipMove;
             @ShipMove.canceled += instance.OnShipMove;
+            @ShipRotate.started += instance.OnShipRotate;
+            @ShipRotate.performed += instance.OnShipRotate;
+            @ShipRotate.canceled += instance.OnShipRotate;
             @ShipPrimaryShoot.started += instance.OnShipPrimaryShoot;
             @ShipPrimaryShoot.performed += instance.OnShipPrimaryShoot;
             @ShipPrimaryShoot.canceled += instance.OnShipPrimaryShoot;
             @ShipSecondaryShoot.started += instance.OnShipSecondaryShoot;
             @ShipSecondaryShoot.performed += instance.OnShipSecondaryShoot;
             @ShipSecondaryShoot.canceled += instance.OnShipSecondaryShoot;
+            @ShpRotationLock.started += instance.OnShpRotationLock;
+            @ShpRotationLock.performed += instance.OnShpRotationLock;
+            @ShpRotationLock.canceled += instance.OnShpRotationLock;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -250,12 +379,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ShipMove.started -= instance.OnShipMove;
             @ShipMove.performed -= instance.OnShipMove;
             @ShipMove.canceled -= instance.OnShipMove;
+            @ShipRotate.started -= instance.OnShipRotate;
+            @ShipRotate.performed -= instance.OnShipRotate;
+            @ShipRotate.canceled -= instance.OnShipRotate;
             @ShipPrimaryShoot.started -= instance.OnShipPrimaryShoot;
             @ShipPrimaryShoot.performed -= instance.OnShipPrimaryShoot;
             @ShipPrimaryShoot.canceled -= instance.OnShipPrimaryShoot;
             @ShipSecondaryShoot.started -= instance.OnShipSecondaryShoot;
             @ShipSecondaryShoot.performed -= instance.OnShipSecondaryShoot;
             @ShipSecondaryShoot.canceled -= instance.OnShipSecondaryShoot;
+            @ShpRotationLock.started -= instance.OnShpRotationLock;
+            @ShpRotationLock.performed -= instance.OnShpRotationLock;
+            @ShpRotationLock.canceled -= instance.OnShpRotationLock;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -276,7 +411,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnShipMove(InputAction.CallbackContext context);
+        void OnShipRotate(InputAction.CallbackContext context);
         void OnShipPrimaryShoot(InputAction.CallbackContext context);
         void OnShipSecondaryShoot(InputAction.CallbackContext context);
+        void OnShpRotationLock(InputAction.CallbackContext context);
     }
 }

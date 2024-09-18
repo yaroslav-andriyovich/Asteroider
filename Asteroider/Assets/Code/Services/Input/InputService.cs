@@ -1,6 +1,8 @@
 using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer.Unity;
+using Gyroscope = UnityEngine.InputSystem.Gyroscope;
 
 namespace Code.Services.Input
 {
@@ -26,7 +28,10 @@ namespace Code.Services.Input
         {
             if (Accelerometer.current != null)
                 InputSystem.EnableDevice(Accelerometer.current);
-            
+
+            if (SystemInfo.supportsGyroscope)
+                InputSystem.EnableDevice(Gyroscope.current);
+
             _playerInput.Enable();
         }
 
@@ -34,6 +39,9 @@ namespace Code.Services.Input
         {
             if (Accelerometer.current != null)
                 InputSystem.DisableDevice(Accelerometer.current);
+            
+            if (Gyroscope.current != null)
+                InputSystem.DisableDevice(Gyroscope.current);
             
             _playerInput.Disable();
         }

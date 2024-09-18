@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ShipRotate",
+                    "type": "PassThrough",
+                    "id": "7052a904-5359-4ee1-b21c-0cf4f503c484",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ShipPrimaryShoot",
                     "type": "Button",
                     "id": "62f84ffc-ffca-45f4-ac59-b9a2f909c1d5",
@@ -31,9 +40,29 @@
                     "processors": "",
                     "interactions": "Press(pressPoint=1.401298E-45,behavior=2)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ShpRotationLock",
+                    "type": "Button",
+                    "id": "1dd43d7e-0f27-44bf-9fe9-e540ad925b17",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
+                {
+                    "name": "",
+                    "id": "dec53caa-d81e-4480-958e-33c6133b6b0d",
+                    "path": "<Accelerometer>/acceleration",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
                 {
                     "name": "Keyboard",
                     "id": "6dc01575-5a85-45bd-ad34-eadc4f7ba152",
@@ -91,17 +120,6 @@
                 },
                 {
                     "name": "",
-                    "id": "dec53caa-d81e-4480-958e-33c6133b6b0d",
-                    "path": "<Accelerometer>/acceleration",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ShipMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2a774fe0-a686-4078-80fa-e2f454a162c3",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -119,6 +137,105 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShipSecondaryShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "581f47fb-9c62-4553-ac6c-2e9e3456184a",
+                    "path": "<Gyroscope>/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "484d4fb5-d5af-4195-a528-f8e4f9a78e5a",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "cfb0d271-76ab-4736-b7b7-1f69c54570fd",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "68ff20be-0bce-492c-8b34-f4d9cc7236d0",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a6d10669-426e-4cbd-b05d-0208e1f10a8b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "1907aa8a-4dea-422a-88cd-bca6aa2c8d60",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "11c1c14d-de70-41f1-be61-ab456949676b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "0a6852c7-4c20-4528-987c-5f1806700e42",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "88c484b7-4e3b-4427-81bb-ab338f17f172",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShpRotationLock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

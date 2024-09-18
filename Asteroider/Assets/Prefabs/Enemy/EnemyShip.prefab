@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rigidbody>k__BackingField: {fileID: 4276846140997241520}
-  <Operation>k__BackingField: 5
+  <Operation>k__BackingField: 3
   <IsSpawnedOutside>k__BackingField: 1
 --- !u!50 &4276846140997241520
 Rigidbody2D:
