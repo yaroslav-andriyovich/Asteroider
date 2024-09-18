@@ -27,9 +27,6 @@ namespace Code.Entities.Weapons.Bullets
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag(GameTags.PlayableZone))
-                return;
-
             if (!other.CompareTag(GameTags.Asteroid))
             {
                 if (other.TryGetComponent(out IDamageable damageable))

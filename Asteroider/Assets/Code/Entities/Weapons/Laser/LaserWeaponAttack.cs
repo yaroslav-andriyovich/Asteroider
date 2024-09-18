@@ -1,6 +1,5 @@
 using Code.Entities.Damageables;
 using Code.Entities.Death;
-using Code.Utils;
 using UnityEngine;
 
 namespace Code.Entities.Weapons.Laser
@@ -9,14 +8,14 @@ namespace Code.Entities.Weapons.Laser
     {
         [SerializeField] private LineRenderer _line;
         [SerializeField, Min(0f)] private float _attackRange;
-        [SerializeField, Min(0f)] private float _attackWidth;
         [SerializeField] private float _damage;
         [SerializeField] private LayerMask _castMask;
 
-        private void Update()
+        private void Awake() => 
+            transform.localRotation = Quaternion.identity;
+
+        private void FixedUpdate()
         {
-            transform.rotation = Quaternion.identity;
-            
             if (!isActiveAndEnabled)
                 return;
 
@@ -24,7 +23,7 @@ namespace Code.Entities.Weapons.Laser
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, _attackRange, _castMask);
             
-            if (hit && !hit.transform.CompareTag(GameTags.PlayableZone))
+            if (hit)
             {
                 if (hit.transform.TryGetComponent(out IDamageable damageable))
                     damageable.TakeDamage(_damage);

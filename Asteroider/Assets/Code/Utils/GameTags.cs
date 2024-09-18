@@ -6,7 +6,6 @@ namespace Code.Utils
         public static readonly string Player = "Player";
         public static readonly string LazerBullet = "LazerBullet";
         public static readonly string Enemy = "Enemy";
-        public static readonly string PlayableZone = "PlayableZone";
         public static readonly string Obstacle = "Obstacle";
     }
 }

@@ -10,7 +10,7 @@ namespace Code.Entities.Enemy
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag(GameTags.PlayableZone) || other.CompareTag(GameTags.Asteroid))
+            if (other.CompareTag(GameTags.Asteroid))
                 return;
             
             OnTrigger?.Invoke(other);
