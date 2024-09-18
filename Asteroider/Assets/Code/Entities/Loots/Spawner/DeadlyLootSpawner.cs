@@ -8,7 +8,7 @@ namespace Code.Entities.Loots.Spawner
 {
     public class DeadlyLootSpawner : MonoBehaviour
     {
-        [SerializeField] private Loot _lootPrefab;
+        [SerializeField] private LootView _lootViewPrefab;
         [SerializeField, Range(0f, 1f)] private float _chance;
         [SerializeField] private bool _transferVelocity = true;
 
@@ -33,10 +33,10 @@ namespace Code.Entities.Loots.Spawner
             if (!CanSpawn())
                 return;
             
-            Loot loot = _objectResolver.Instantiate(_lootPrefab, transform.position, Quaternion.identity);
+            LootView lootView = _objectResolver.Instantiate(_lootViewPrefab, transform.position, Quaternion.identity);
             
             if (_transferVelocity && TryGetComponent(out Rigidbody2D rb))
-                loot.Rigidbody.velocity = rb.velocity;
+                lootView.Rigidbody.velocity = rb.velocity;
         }
 
         private bool CanSpawn()

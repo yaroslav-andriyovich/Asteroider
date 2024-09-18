@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Code.Entities.Loots
 {
-    public class ShieldLoot : MonoBehaviour, ILootPickupBehaviour
+    public class ShieldLoot : Loot
     {
-        public void PickUp(GameObject user)
+        public override void Collect(GameObject player)
         {
-            if (user.TryGetComponent(out IShield shield))
+            if (player.TryGetComponent(out IShield shield))
                 shield.Restore();
         }
     }

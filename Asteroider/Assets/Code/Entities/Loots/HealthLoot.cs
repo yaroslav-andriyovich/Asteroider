@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Code.Entities.Loots
 {
-    public class HealthLoot : MonoBehaviour, ILootPickupBehaviour
+    public class HealthLoot : Loot
     {
-        public void PickUp(GameObject user)
+        public override void Collect(GameObject player)
         {
-            if (user.TryGetComponent(out IHealth health))
+            if (player.TryGetComponent(out IHealth health))
                 health.Restore();
         }
     }

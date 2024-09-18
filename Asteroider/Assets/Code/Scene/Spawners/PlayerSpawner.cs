@@ -1,6 +1,6 @@
-using System;
 using Code.Entities.Player;
 using Code.Entities.Weapons.Base;
+using Code.Services.Player;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -15,13 +15,15 @@ namespace Code.Scene.Spawners
         [SerializeField] private Vector2 _spawnPosition;
         [SerializeField] private Vector3 _spawnRotation;
 
-        public event Action<PlayerShip> OnSpawned;
-
         private IObjectResolver _objectResolver;
+        private PlayerProvider _playerProvider;
 
         [Inject]
-        private void Construct(IObjectResolver objectResolver) => 
+        private void Construct(IObjectResolver objectResolver, PlayerProvider playerProvider)
+        {
+            _playerProvider = playerProvider;
             _objectResolver = objectResolver;
+        }
 
         private void Start()
         {
@@ -29,7 +31,8 @@ namespace Code.Scene.Spawners
             PlayerWeapon weapon = ship.GetComponent<PlayerWeapon>();
             
             SetupWeapon(weapon, ship.transform);
-            OnSpawned?.Invoke(ship);
+
+            _playerProvider.Player = ship.gameObject;
         }
 
         private void SetupWeapon(PlayerWeapon weapon, Transform parent)

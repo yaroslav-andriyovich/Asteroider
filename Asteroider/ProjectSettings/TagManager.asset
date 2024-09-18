@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - Asteroid
   - LazerBullet
-  - PlayableZone
   - Obstacle
   layers:
   - Default

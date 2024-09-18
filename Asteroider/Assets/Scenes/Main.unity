@@ -823,7 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerShipPrefab: {fileID: 6254538063486876232, guid: b25f1dc89762c274f9e91807368e07bf,
     type: 3}
-  _primaryWeaponPrefab: {fileID: 483490783052686425, guid: 59f6d4fb9489dc3428be7ac22305a337,
+  _primaryWeaponPrefab: {fileID: 1451343838067374903, guid: 5466a11b327daf34989e5336ceb69575,
     type: 3}
   _secondaryWeaponPrefab: {fileID: 2314575200969704927, guid: ed5284c58da7b4546921495d5c5a2f5d,
     type: 3}

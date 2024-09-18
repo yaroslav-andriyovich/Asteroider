@@ -62,7 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _line: {fileID: 483490784095963422}
   _attackRange: 30
-  _attackWidth: 2
   _damage: 2
   _castMask:
     serializedVersion: 2

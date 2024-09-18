@@ -1,9 +1,12 @@
 using Code.Effects;
+using Code.Entities.Loots;
 using Code.Scene;
 using Code.Scene.ObjectEmitting;
 using Code.Scene.Spawners;
 using Code.Services.EndGame;
+using Code.Services.Loots;
 using Code.Services.OutOfBounds;
+using Code.Services.Player;
 using Code.Services.Pools;
 using Code.Services.WorldBounds;
 using UnityEngine;
@@ -26,6 +29,8 @@ namespace Code.Infrastructure.DependencyInjection
             builder.Register<PoolService>(Lifetime.Singleton);
             builder.RegisterComponent(_explosionAudio);
             builder.RegisterComponentInHierarchy<ObjectEmittingZone>();
+            builder.Register<PlayerProvider>(Lifetime.Singleton);
+            builder.Register<LootCollectionService>(Lifetime.Singleton);
             builder.RegisterComponent(_playerSpawner);
             builder.Register<EndGameService>(Lifetime.Singleton);
             builder.RegisterEntryPoint<GameOverChecker>();

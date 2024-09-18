@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf81752a336b49b790912d2324d496c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lootPrefab: {fileID: 6888940149084232911, guid: 51fb5c048e91c7040bde0300ccb32988,
+  _lootViewPrefab: {fileID: 6888940149084232911, guid: 51fb5c048e91c7040bde0300ccb32988,
     type: 3}
   _chance: 0.3
   _transferVelocity: 1

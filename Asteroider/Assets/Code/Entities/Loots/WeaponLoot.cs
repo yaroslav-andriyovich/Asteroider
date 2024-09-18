@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Code.Entities.Loots
 {
-    public class WeaponLoot : MonoBehaviour, ILootPickupBehaviour
+    public class WeaponLoot : Loot
     {
         [SerializeField] private GameObject _weapon;
-        
-        public void PickUp(GameObject user)
+
+        public override void Collect(GameObject player)
         {
-            PlayerWeapon playerWeapon = user.GetComponent<PlayerWeapon>();
+            PlayerWeapon playerWeapon = player.GetComponent<PlayerWeapon>();
             IWeapon newWeapon = Instantiate(_weapon).GetComponent<IWeapon>();
 
             playerWeapon.ChangeWeapon(newWeapon);
