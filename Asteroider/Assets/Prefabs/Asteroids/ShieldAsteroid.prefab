@@ -190,9 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf81752a336b49b790912d2324d496c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lootViewPrefab: {fileID: 6888940149084232911, guid: 513fa3efc82f28149b6ec51be1048448,
-    type: 3}
-  _chance: 0.9
+  _loots:
+  - prefab: {fileID: 6888940149084232911, guid: 513fa3efc82f28149b6ec51be1048448,
+      type: 3}
+    dropChance: 1
+  _nothingChance: 0.2
   _transferVelocity: 1
 --- !u!114 &-7064087781286834881
 MonoBehaviour:

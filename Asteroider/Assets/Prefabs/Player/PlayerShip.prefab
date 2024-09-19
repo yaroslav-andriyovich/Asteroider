@@ -100,11 +100,11 @@ GameObject:
   - component: {fileID: 6254538063486876599}
   - component: {fileID: 9136347144455068999}
   - component: {fileID: 158726729033457320}
+  - component: {fileID: 166809229606023379}
   - component: {fileID: 591442256243052438}
   - component: {fileID: 6337699941490410820}
   - component: {fileID: 7269870546351458247}
   - component: {fileID: 196656623386235272}
-  - component: {fileID: 166809229606023379}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Player
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fef49ad9a043f9af5f389589086188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Max>k__BackingField: 10000
+  <Max>k__BackingField: 100
 --- !u!114 &6254538063486876597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85caabe372984c47a8f7a3958c341ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &166809229606023379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254538063486876239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f403921893f94105a854a3abd5d6c6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rigidbody>k__BackingField: {fileID: 591442256243052438}
+  <Operation>k__BackingField: 2
+  <IsSpawnedOutside>k__BackingField: 0
 --- !u!50 &591442256243052438
 Rigidbody2D:
   serializedVersion: 4
@@ -336,55 +351,40 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 7269870546351458247}
     m_ColliderPaths:
-    - - X: 35000000
-        Y: 9000000
-      - X: -35000000
-        Y: 9000000
-      - X: -35000000
-        Y: -29000000
-      - X: 35000000
-        Y: -29000000
+    - - X: 32500000
+        Y: 6250000
+      - X: -32500000
+        Y: 6250000
+      - X: -32500000
+        Y: -26250000
+      - X: 32500000
+        Y: -26250000
   - m_Collider: {fileID: 6337699941490410820}
     m_ColliderPaths:
-    - - X: 7500000
-        Y: 32750000
-      - X: -7500000
-        Y: 32750000
-      - X: -7500000
-        Y: -32750000
-      - X: 7500000
-        Y: -32750000
+    - - X: 5000000
+        Y: 32500000
+      - X: -5000000
+        Y: 32500000
+      - X: -5000000
+        Y: -32500000
+      - X: 5000000
+        Y: -32500000
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.74997073, y: -3.275}
-      - {x: 0.7500294, y: -2.9}
-      - {x: 3.5, y: -2.8999708}
-      - {x: 3.499971, y: 0.90000004}
-      - {x: 0.75, y: 0.9000294}
-      - {x: 0.74997073, y: 3.275}
-      - {x: -0.75, y: 3.2749708}
-      - {x: -0.7500294, y: 0.90000004}
-      - {x: -3.5, y: 0.8999707}
-      - {x: -3.499971, y: -2.9}
-      - {x: -0.75, y: -2.9000294}
-      - {x: -0.74997073, y: -3.275}
+    - - {x: 0.4999707, y: -3.25}
+      - {x: 0.5000294, y: -2.625}
+      - {x: 3.25, y: -2.624971}
+      - {x: 3.249971, y: 0.625}
+      - {x: 0.5, y: 0.6250294}
+      - {x: 0.4999707, y: 3.25}
+      - {x: -0.5, y: 3.249971}
+      - {x: -0.5000294, y: 0.625}
+      - {x: -3.25, y: 0.62497073}
+      - {x: -3.249971, y: -2.625}
+      - {x: -0.5, y: -2.6250293}
+      - {x: -0.4999707, y: -3.25}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
---- !u!114 &166809229606023379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6254538063486876239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f403921893f94105a854a3abd5d6c6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Rigidbody>k__BackingField: {fileID: 591442256243052438}
-  <Operation>k__BackingField: 2
-  <IsSpawnedOutside>k__BackingField: 0
 --- !u!1 &6254538064606525692
 GameObject:
   m_ObjectHideFlags: 0

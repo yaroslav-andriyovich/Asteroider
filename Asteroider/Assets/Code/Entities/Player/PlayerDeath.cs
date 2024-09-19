@@ -4,7 +4,6 @@ using Code.Entities.Death;
 using Code.Entities.HealthPoints;
 using Code.Infrastructure.Pools;
 using Code.Services.Pools;
-using Code.Utils;
 using UnityEngine;
 using VContainer;
 
@@ -25,12 +24,6 @@ namespace Code.Entities.Player
             _health.OnChanged += OnHealthChanged;
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag(GameTags.Obstacle))
-                Die();
-        }
-        
         private void OnDestroy() => 
             _health.OnChanged -= OnHealthChanged;
 

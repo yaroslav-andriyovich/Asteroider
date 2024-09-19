@@ -1,5 +1,4 @@
 using Code.Effects;
-using Code.Entities.Loots;
 using Code.Scene;
 using Code.Scene.ObjectEmitting;
 using Code.Scene.Spawners;

@@ -34,8 +34,7 @@ namespace Code.Entities.Enemy
         private void OnTrigger(Collider2D other)
         {
             if (!_isDead 
-                && (other.CompareTag(GameTags.Player) 
-                || other.CompareTag(GameTags.Obstacle)
+                && (other.CompareTag(GameTags.Player)
                 || other.CompareTag(GameTags.Enemy)))
                 Die();
         }
