@@ -35,6 +35,9 @@ namespace Code.Infrastructure.DependencyInjection
             builder.RegisterEntryPoint<GameOverChecker>();
 
             builder.RegisterBuildCallback(resolver => _scenePoolInitializer.Initialize(resolver));
+            
+            if(Debug.isDebugBuild)
+                SRDebug.Init();
         }
     }
 }
