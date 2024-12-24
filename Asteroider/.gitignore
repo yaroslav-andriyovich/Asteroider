@@ -71,5 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+/*_BurstDebugInformation_DoNotShip/
+
 /[Aa]ssets/Plugins/StompyRobot/
 /[Aa]ssets/Plugins/Sirenix/
+/[Aa]ssets/Plugins/vFavorites/
